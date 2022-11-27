@@ -1,13 +1,19 @@
 'use strict';
 
 const express = require('express');
+const body = require('body-parser');
+const path = require('path');
 const app = express();
-const port = 3002;
+
+app.use(body.json());
+app.use(express.static('.'));
+
+const port = process.env.PORT || 3002;
 
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
-})
+    res.sendFile(path.join(__dirname, '.', 'index.html'));
+});
 
 app.get('/login', (req, res) => {
     res.send('user login')
