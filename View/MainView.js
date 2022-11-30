@@ -7,7 +7,7 @@ export class MainView {
     }
 
     render() {
-        const root = document.querySelector('#root')
+        const root = document.querySelector('#root');
         const container = document.createElement('div');
         container.classList.add('page-container');
 
