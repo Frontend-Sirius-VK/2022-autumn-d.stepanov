@@ -1,0 +1,22 @@
+.header__style {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px;
+    gap: 50px;
+}
+
+header {
+    background-color: var(--color-headeer-background);
+    width: 100%;
+
+}
+
+.links {
+    color: white;
+    text-decoration: none;
+}
+
+.links:hover {
+    color: rgba(255, 255, 255, 0.514);
+}

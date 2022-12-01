@@ -1,0 +1,25 @@
+@import './Components/Header/header.css';
+
+
+:root {
+    --color-primary: #4B899D;
+    --color-secondary: #6897A6;
+    --color-root-background: #E8EEF0;
+    --color-text-primary: #2F2F2F;
+    --color-text-inverted-primary: #FFF;
+    --color-page-background: #FFF;
+    --color-headeer-background: #343a40;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.page-container {
+    display: flex;
+    justify-content: center;
+
+}
