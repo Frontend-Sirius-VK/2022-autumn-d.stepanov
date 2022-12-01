@@ -1,11 +1,9 @@
 'use strict';
 
 const express = require('express');
-const body = require('body-parser');
 const path = require('path');
 const app = express();
 
-app.use(body.json());
 app.use(express.static('.'));
 
 const port = process.env.PORT || 3002;
