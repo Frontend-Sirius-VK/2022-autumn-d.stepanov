@@ -1,25 +1,30 @@
 @import './Components/Header/header.css';
+@import './Components/DescriptionSiteAnimego/DescriptionAnimego.css';
+@import './Components/ContentsAnime/ContentsAnime.css';
+@import './Components/AnimeContent/AnimeContent.css';
 
 
 :root {
-    --color-primary: #4B899D;
-    --color-secondary: #6897A6;
-    --color-root-background: #E8EEF0;
-    --color-text-primary: #2F2F2F;
-    --color-text-inverted-primary: #FFF;
-    --color-page-background: #FFF;
-    --color-headeer-background: #343a40;
+    --color-descriptionAnimego-background: #e9ebee;
+    --color-header-background: #343a40;
+    --color-header-border: #ff5c57;
+    --color-text: #212529;
+    --color-content-heading-text: #f7f7f7;
+    --color-content-background: #ffffff;
+    --color-content-links: #ff5f67;
 }
 
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: var(--color-descriptionAnimego-background);;
 }
 
 
 .page-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 
 }
+

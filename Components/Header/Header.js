@@ -9,7 +9,7 @@ export class Header {
         header.classList.add('header__style');
 
         const icons = document.createElement('img');
-        icons.src = './Components/Header/logo.png';
+        icons.src = '../Image/Logo/logo.png';
         icons.alt = 'AnimeGo';
 
         const anime = document.createElement('div');
@@ -19,6 +19,21 @@ export class Header {
         linkAnime.innerHTML += 'Аниме';
         anime.append(linkAnime);
 
+        const manga = document.createElement('div');
+        const linkManga = document.createElement('a');
+        linkManga.classList.add('links');
+        linkManga.href = 'https://animego.org/manga';
+        linkManga.innerHTML += 'Манга';
+        manga.append(linkManga);
+
+
+        const persons = document.createElement('div');
+        const linkPersons = document.createElement('a');
+        linkPersons.classList.add('links');
+        linkPersons.href = 'https://animego.org/characters';
+        linkPersons.innerHTML += 'Персонажи';
+        persons.append(linkPersons);
+
         const login = document.createElement('div');
         const linkLogin = document.createElement('a');
         linkLogin.classList.add('links');
@@ -26,9 +41,10 @@ export class Header {
         linkLogin.innerHTML += 'Войти';
         login.append(linkLogin);
 
-        header.append(icons, anime, login);
+        header.append(icons, anime, manga, persons, login);
 
 
         container.appendChild(header);
     }
 }
+

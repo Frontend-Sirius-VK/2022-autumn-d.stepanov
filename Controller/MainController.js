@@ -1,8 +1,15 @@
 import {MainView} from '../View/MainView.js';
+import {AnimeContents} from '../Model/AnimeContents.js';
+
 
 export class MainController {
-    process() {
+    async process() {
         const view = new MainView();
         view.render();
+
+        const animeContents = new AnimeContents();
+        animeContents.fetchData();
+
     }
 }
+

@@ -7,9 +7,11 @@
 }
 
 header {
-    background-color: var(--color-headeer-background);
+    background-color: var(--color-header-background);
     width: 100%;
-
+    border-bottom: 2px var(--color-header-border) solid;
+    position: fixed;
+    padding-left: 100px;
 }
 
 .links {
@@ -20,3 +22,4 @@ header {
 .links:hover {
     color: rgba(255, 255, 255, 0.514);
 }
+

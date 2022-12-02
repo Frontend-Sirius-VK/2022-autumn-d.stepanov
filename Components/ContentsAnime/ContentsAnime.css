@@ -1,0 +1,12 @@
+.content {
+    display: flex;
+    width: 100%;
+}
+
+.contents__style {
+    font-size: 20px;
+    width: 55%;
+    margin: 20px 100px 0px 115px;
+    background-color: var(--color-content-background);
+}
+
