@@ -8,10 +8,9 @@ export class AnimeContent {
 
         const heading = document.createElement('h2');
         heading.classList.add('content__heading_text_style');
-        heading.innerHTML += 'Новые аниме на сайте';
+        heading.textContent += 'Новые аниме на сайте';
 
-        console.log(data);
-
+        this.parent.prepend(heading);
 
         data.forEach(element => {
             const image = document.createElement('img');
@@ -26,27 +25,26 @@ export class AnimeContent {
             const contentDescription = document.createElement('div');
             contentDescription.classList.add('content__description');
 
-            const linkAnime = document.createElement('a');
-            linkAnime.classList.add('links__anime');
-            linkAnime.href = element.url_anime;
-            linkAnime.innerHTML += element.name_anime;
+            const link = document.createElement('a');
+            link.classList.add('links__anime');
+            link.href = element.url_anime;
+            link.target = '_blank';
+            link.textContent = element.name_anime;
 
             const contentCategory = document.createElement('span');
-            contentCategory.innerHTML += element.category_anime + ' / ' + element.age_anime;
+            contentCategory.textContent = element.category_anime + ' / ' + element.age_anime;
 
             const description = document.createElement('p');
             description.classList.add('content__description_text_style');
-            description.innerHTML += element.description_anime;
+            description.textContent = element.description_anime;
 
-            contentDescription.append(linkAnime, contentCategory, description);
+            contentDescription.append(link, contentCategory, description);
 
             container.append(image, contentDescription);
             this.container = container;
 
-            this.parent.prepend(this.container);
+            this.parent.append(this.container);
         });
-
-        this.parent.prepend(heading);
             
     }
 

@@ -11,7 +11,7 @@ const pool = new Pool({
 async function getAllContent() {
     try {
 
-        const res = await pool.query('select * from anime_contents order by id desc');
+        const res = await pool.query('select * from anime_contents order by id');
         return res.rows;    
 
     } catch (error) {
