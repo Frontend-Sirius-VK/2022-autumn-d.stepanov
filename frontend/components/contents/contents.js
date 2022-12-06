@@ -1,10 +1,10 @@
 import EventBus from "../../utils/eventBus.js";
-import {AnimeContent} from "../content/content.js";
+import {Content} from "../content/content.js";
 
-export class ContentsAnime {
+export class Contents {
     constructor(parent) {
         this.parent = parent;
-        this.animeContent = null;
+        this.content = null;
         EventBus.on('animeContents:got-info', this.update.bind(this));
     }
 
@@ -16,7 +16,7 @@ export class ContentsAnime {
         const contentsAnime = document.createElement('div');
         contentsAnime.classList.add('contents__style');        
 
-        this.animeContent = new AnimeContent(contentsAnime);
+        this.content = new Content(contentsAnime);
 
         contents.appendChild(contentsAnime);
 
@@ -28,7 +28,7 @@ export class ContentsAnime {
         if (!data || !data.length) {
             return;
         }
-        this.animeContent.update(data);
+        this.content.update(data);
     }
 }
 

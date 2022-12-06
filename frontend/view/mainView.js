@@ -1,13 +1,13 @@
 import {Header} from '../components/header/header.js';
-import {DescriptionAnimego} from '../components/descriptionSite/descriptionSite.js';
-import {ContentsAnime} from '../components/contents/contents.js';
+import {Description} from '../components/descriptionSite/descriptionSite.js';
+import {Contents} from '../components/contents/contents.js';
 
 
 export class MainView {
     constructor() {
         this.header = null;
-        this.descriptionAnimego = null;
-        this.contentAnime = null;
+        this.description = null;
+        this.contents = null;
     }
 
     render() {
@@ -18,14 +18,14 @@ export class MainView {
 
         this.header = new Header(container);
 
-        this.descriptionAnimego = new DescriptionAnimego(container);
+        this.description = new Description(container);
 
-        this.contentAnime = new ContentsAnime(container);
+        this.contents = new Contents(container);
 
         root.append(container);
         this.header.render();
-        this.descriptionAnimego.render();
-        this.contentAnime.render();
+        this.description.render();
+        this.contents.render();
     }
 
 }

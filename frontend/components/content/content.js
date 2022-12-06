@@ -1,4 +1,4 @@
-export class AnimeContent {
+export class Content {
     constructor(parent) {
         this.parent = parent;
         this.container = null;

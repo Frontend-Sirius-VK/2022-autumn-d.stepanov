@@ -1,4 +1,4 @@
-export class DescriptionAnimego {
+export class Description {
     constructor(parent) {
         this.parent = parent;
     }
