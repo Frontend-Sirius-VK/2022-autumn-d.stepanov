@@ -19,14 +19,13 @@ app.get('/', (req, res) => {
 
 app.get('/contents', async (req, res) => {
     try {
+
         const result = await db.getAllContent();
-        if (!result) {
-            res.status(404).end();
-        }
+        
         res.json(result);
 
     } catch(error) {
-        console.log(error);
+        res.status(500).end();
     }
 });
 

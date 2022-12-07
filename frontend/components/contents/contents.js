@@ -24,7 +24,7 @@ export class Contents {
 
     }
 
-    update(data = {}) {
+    update(data = []) {
         if (!data || !data.length) {
             return;
         }

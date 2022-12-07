@@ -22,6 +22,10 @@ class EventBus {
     }
 
     emit(eventName, data) {
+        if (!this.listeners[eventName]) {
+            return;
+        }
+
         this.listeners[eventName].forEach((listener) => {
             listener(data);
         });

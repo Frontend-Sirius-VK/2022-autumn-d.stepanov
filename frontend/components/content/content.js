@@ -1,7 +1,10 @@
 export class Content {
     constructor(parent) {
         this.parent = parent;
-        this.container = null;
+
+        const container = document.createElement('div');
+        container.classList.add('content__style');
+        this.container = container;
     }
 
     render(data) {
@@ -18,8 +21,8 @@ export class Content {
             image.src = element.url_image;
             image.alt = 'AnimeGo';
 
-            const container = document.createElement('div');
-            container.classList.add('content__style');
+            this.container = document.createElement('div');
+            this.container.classList.add('content__style');
 
 
             const contentDescription = document.createElement('div');
@@ -40,8 +43,8 @@ export class Content {
 
             contentDescription.append(link, contentCategory, description);
 
-            container.append(image, contentDescription);
-            this.container = container;
+            this.container.append(image, contentDescription);
+            // this.container = container;
 
             this.parent.append(this.container);
         });
@@ -49,6 +52,7 @@ export class Content {
     }
 
     update(data) {
+        this.container.innerHTML = '';
         this.render(data);
     }
 }
