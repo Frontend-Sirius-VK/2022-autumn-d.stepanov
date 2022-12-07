@@ -1,10 +1,12 @@
 'use strict';
-require('dotenv').config()
+require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
 const bodyParser = require("body-parser");
 const app = express();
+
+const db = require('./model/querys.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -12,11 +14,22 @@ app.use(express.static('.'));
 
 const port = process.env.PORT || 3002;
 
-const db = require('./Model/querys.js');
-
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '.', 'index.html'));
+    res.sendFile(path.join(__dirname, '.', '../frontend/index.html'));
+});
+
+
+app.get('/contents', async (req, res) => {
+    try {
+
+        const result = await db.getAllContent();
+        
+        res.json(result);
+
+    } catch(error) {
+        res.status(500).end();
+    }
 });
 
 

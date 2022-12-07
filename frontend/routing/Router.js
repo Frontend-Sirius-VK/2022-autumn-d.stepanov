@@ -1,4 +1,4 @@
-import {MainController} from '../Controller/MainController.js'
+import {MainController} from '../controller/mainController.js'
 
 const routes = {
     '/': MainController,

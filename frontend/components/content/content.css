@@ -1,0 +1,46 @@
+.content__heading_text_style {
+    font-size: 2rem;
+    margin: 0;
+    padding: 15px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-dark-blue);
+    background-color: var(--color-white-smoke);
+}
+
+.content__image {
+    width: 180px;
+}
+
+.content__style {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.content__description {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.links__anime {
+    color: var(--color-light-red);
+    text-decoration: none;
+}   
+
+.links__anime:hover {
+    color: var(--color-red);
+    text-decoration: underline;
+}
+
+.content__description_text_style {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    color: var(--color-dark-blue);
+}
+

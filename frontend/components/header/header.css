@@ -7,9 +7,9 @@
 }
 
 header {
-    background-color: var(--color-header-background);
+    background-color: var(--color-baltic-sea);
     width: 100%;
-    border-bottom: 2px var(--color-header-border) solid;
+    border-bottom: 2px var(--color-tomato) solid;
     position: fixed;
     padding-left: 100px;
 }

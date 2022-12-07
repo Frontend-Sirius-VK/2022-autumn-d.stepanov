@@ -1,5 +1,5 @@
-import {MainView} from '../View/MainView.js';
-import {AnimeContents} from '../Model/AnimeContents.js';
+import {MainView} from '../view/mainView.js';
+import {AnimeContents} from '../model/animeContents.js';
 
 
 export class MainController {

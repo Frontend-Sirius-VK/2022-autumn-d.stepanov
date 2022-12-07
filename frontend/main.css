@@ -1,0 +1,31 @@
+@import '/frontend/components/header/header.css';
+@import '/frontend/components/descriptionSite/descriptionSite.css';
+@import '/frontend/components/contents/contents.css';
+@import '/frontend/components/content/content.css';
+
+
+:root {
+    --color-light-grey: #e9ebee;
+    --color-baltic-sea: #343a40;
+    --color-tomato: #ff5c57;
+    --color-dark-blue: #212529;
+    --color-white-smoke: #f7f7f7;
+    --color-white: #ffffff;
+    --color-light-red: #ff5f67;
+    --color-red: #ff000d;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-light-grey);
+}
+
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+
+}
+
