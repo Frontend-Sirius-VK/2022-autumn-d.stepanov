@@ -1,3 +1,6 @@
+import { Loader } from '../loader/loader.js';
+import EventBus from "../../utils/eventBus.js";
+
 export class Content {
     constructor(parent) {
         this.parent = parent;
@@ -5,15 +8,26 @@ export class Content {
         const container = document.createElement('div');
         container.classList.add('content__style');
         this.container = container;
+
+        EventBus.on('animeContents:loading', this.render.bind(this));
     }
 
     render(data) {
+
+        if (!data) {
+            this.container.innerHTML = '';
+            const loader = new Loader(this.container);
+            loader.render();
+            this.parent.append(this.container);
+            return;
+        }
 
         const heading = document.createElement('h2');
         heading.classList.add('content__heading_text_style');
         heading.textContent += 'Новые аниме на сайте';
 
         this.parent.prepend(heading);
+
 
         data.forEach(element => {
             const image = document.createElement('img');
@@ -44,7 +58,6 @@ export class Content {
             contentDescription.append(link, contentCategory, description);
 
             this.container.append(image, contentDescription);
-            // this.container = container;
 
             this.parent.append(this.container);
         });

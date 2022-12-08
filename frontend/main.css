@@ -2,6 +2,7 @@
 @import '/frontend/components/descriptionSite/descriptionSite.css';
 @import '/frontend/components/contents/contents.css';
 @import '/frontend/components/content/content.css';
+@import '/frontend//components//loader//loader.css';
 
 
 :root {

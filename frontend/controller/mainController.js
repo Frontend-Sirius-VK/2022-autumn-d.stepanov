@@ -1,5 +1,6 @@
 import {MainView} from '../view/mainView.js';
 import {AnimeContents} from '../model/animeContents.js';
+import EventBus from '../utils/eventBus.js';
 
 
 export class MainController {
@@ -8,6 +9,7 @@ export class MainController {
         view.render();
 
         const animeContents = new AnimeContents();
+        EventBus.emit('animeContents:loading');
         animeContents.fetchData();
 
     }
