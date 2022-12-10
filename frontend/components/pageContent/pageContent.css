@@ -1,0 +1,7 @@
+.page-content {
+    display: flex;
+    margin-top: 80px;
+    justify-content: center;
+    width: 95%;
+    background-color: var(--color-white-smoke);
+}

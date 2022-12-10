@@ -24,7 +24,7 @@ export class Content {
 
         const heading = document.createElement('h2');
         heading.classList.add('content__heading_text_style');
-        heading.textContent += 'Новые аниме на сайте';
+        heading.textContent = 'Новые аниме на сайте';
 
         this.parent.prepend(heading);
 
@@ -44,7 +44,7 @@ export class Content {
 
             const link = document.createElement('a');
             link.classList.add('links__anime');
-            link.href = element.url_anime;
+            link.href = element.url_anime + element.id;
             link.target = '_blank';
             link.textContent = element.name_anime;
 

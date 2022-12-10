@@ -1,45 +1,63 @@
-import {MainController} from '../controller/mainController.js'
+import {MainController} from '../controller/mainController.js';
+import {ContentController} from '../controller/contentController.js';
 
-const routes = {
-    '/': MainController,
-}
+const routes = [
+    {
+        path: /^\/$/,
+        controller: MainController
+    },
+    {
+        path: /anime\/\d/,
+        controller: ContentController
+    },
+]
+
 
 export class Router {
     constructor() {
-        this.onDocumentClick = this.onDocumentClick.bind(this);
+
     }
 
-    onDocumentClick(event) {
-        const {target} = event;
-        const {tagName} = target;
-
-        if (tagName === 'A') {
-
-            if (target.href !== undefined) {
-                this.go(target.href);
-            }
+    getId() {
+        const pathName = window.location.pathname;
+        const rex = /\w+$/;
+        try {
+            const id = pathName.match(rex)[0];
+            return id;
+        } catch (error) {
+            return;
         }
     }
 
-    go(pathname) {
-        window.history.pushState({}, '', pathname);
-        this.invokeController();
-    }
-
     invokeController() {
-        const ControllerClass = routes[window.location.pathname];
+        const id = this.getId();
+
+        const pathname = window.location.pathname;
+
+        const result = routes.find((route) => {
+            const regexp = new RegExp(route.path);
+            const matches = pathname.match(regexp);
+
+            if (!matches) {
+                return false;
+            }
+            return true;
+        });
+
+        if (!result) {
+            console.log('404')
+        }
+
+        const ControllerClass = result.controller;
         const controller = new ControllerClass();
-        controller.process();
+        controller.process(id);
+
     }
 
     start() {
-        document.addEventListener('click', this.onDocumentClick);
         this.invokeController();
     }
 
-    stop() {
-        document.removeEventListener('click', this.onDocumentClick);
-    }
 }
 
 export const router = new Router();

@@ -19,6 +19,15 @@ async function getAllContent() {
     }
 }
 
+async function getById(id) {
+    try {
+        const res = await pool.query('SELECT * FROM anime_contents WHERE id = $1', [id]);
+        return res.rows;
+    } catch(error) {
+        console.log(error);
+    }
+}
+
 async function create(urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime) {
     try {
 
@@ -66,6 +75,7 @@ async function deleteContent(id) {
 
 module.exports = {
     getAllContent,
+    getById,
     create,
     update,
     deleteContent
