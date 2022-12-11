@@ -10,3 +10,13 @@
     background-color: var(--color-white);
 }
 
+
+@media (orientation: portrait) {
+    .contents__style {
+        margin: 0;
+        font-size: 5vw;
+        width: 100%;
+        background-color: var(--color-white);
+    }
+}
+

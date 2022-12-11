@@ -2,23 +2,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 150px;
+    margin-top: 30%;
     flex-flow: column;
+    padding: 25px 15px 0px 15px;
 }
 
 .error-container__status {
     font-size: 24px;
     line-height: 32px;
-    color: var(--error-status-color);
+    color: var( --color-light-red);
     font-weight: bold;
     margin: 0 auto;
     padding-bottom: 5px;
 }
 
 .error-container__text {
-    padding: 0 35px;
     font-size: 18px;
     line-height: 32px;
-    color: var(--error-text-color);
+    color: var(--color-baltic-sea);
     margin: 0 auto;
 }

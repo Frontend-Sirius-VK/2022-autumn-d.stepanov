@@ -4,14 +4,15 @@
     align-items: center;
     margin: 15px;
     gap: 50px;
+    /* font-size: 1.5em; */
 }
 
 header {
     background-color: var(--color-baltic-sea);
     width: 100%;
+    /* height: 8vh; */
     border-bottom: 2px var(--color-tomato) solid;
     position: fixed;
-    padding-left: 100px;
 }
 
 .links {
@@ -21,5 +22,27 @@ header {
 
 .links:hover {
     color: rgba(255, 255, 255, 0.514);
+}
+
+@media (orientation: portrait) {
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--color-baltic-sea);
+        width: 100%;
+        height: 9vh;
+        border-bottom: 3px var(--color-tomato) solid;
+        position: fixed;
+    }
+
+    .image {
+        width: 15vh;
+    }
+    
+    .header-content {
+        display: none;
+    }
+
 }
 

@@ -44,3 +44,39 @@
     color: var(--color-dark-blue);
 }
 
+
+@media (orientation: portrait) {
+    .content__heading_text_style {
+        font-size: 5vw;
+        margin: 0;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 2vh;
+        padding-right: 2vh;
+        font-weight: 500;
+        line-height: 1.2;
+        color: var(--color-dark-blue);
+        background-color: var(--color-white-smoke);
+    }
+
+    .content__image {
+        width: 25vh;
+    }
+
+    .content__style {
+        margin: 20px;
+        margin-bottom: 5vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .content__description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+}
+
