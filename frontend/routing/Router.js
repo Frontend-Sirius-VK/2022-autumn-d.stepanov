@@ -22,8 +22,7 @@ export class Router {
         const pathName = window.location.pathname;
         const rex = /\w+$/;
         try {
-            const id = pathName.match(rex)[0];
-            return id;
+            return pathName.match(rex)[0];
         } catch (error) {
             return;
         }
@@ -45,7 +44,7 @@ export class Router {
         });
 
         if (!result) {
-            console.log('404')
+            return;
         }
 
         const ControllerClass = result.controller;

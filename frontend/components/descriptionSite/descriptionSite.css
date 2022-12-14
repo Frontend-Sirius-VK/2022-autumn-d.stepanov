@@ -31,23 +31,23 @@
         display: flex;
         justify-content: center;
         width: 100%;
-        margin-top: 10vh;
+        margin-top: 90px;
     }
 
     .descriptionAnimego__style {
-        padding-left: 2vh;
-        padding-right: 2vh;
+        padding-left: 15px;
+        padding-right: 15px;
     }
     
     .descriptionAnimego__heading {
-        font-size: 5vw;
-        color: var(---color-dark-blue);
+        font-size: clamp(2vh, 3vh, 4vh);
+        color: var(--color-dark-blue);
         font-weight: 500;
         line-height: 1.2;
     }
     
     .descriptionAnimego__text {
-        font-size: 3vw;
+        font-size: clamp(1vh, 2vh, 3vh);
         font-weight: 400;
         line-height: 1.5;
     }

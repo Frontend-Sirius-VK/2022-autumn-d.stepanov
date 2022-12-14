@@ -28,7 +28,7 @@ export class PageContent {
 
         const image = document.createElement('img');
         image.classList.add('content__image');
-        image.src = data[0].url_image;
+        image.src = data.urlImage;
         image.alt = 'AnimeGo';
 
 
@@ -37,16 +37,16 @@ export class PageContent {
 
         const link = document.createElement('a');
         link.classList.add('links__anime');
-        link.href = data[0].url_anime + data[0].id;
+        link.href = data.urlAnime + data.id;
         link.target = '_blank';
-        link.textContent = data[0].name_anime;
+        link.textContent = data.nameAnime;
 
         const contentCategory = document.createElement('span');
-        contentCategory.textContent = data[0].category_anime + ' / ' + data[0].age_anime;
+        contentCategory.textContent = data.categoryAnime + ' / ' + data.ageAnime;
 
         const description = document.createElement('p');
         description.classList.add('content__description_text_style');
-        description.textContent = data[0].description_anime;
+        description.textContent = data.descriptionAnime;
 
         contentDescription.append(link, contentCategory, description);
 
@@ -59,8 +59,8 @@ export class PageContent {
 
     }
 
-    update(data = []) {
-        if (!data || !data.length) {
+    update(data = {}) {
+        if (!data || !Object.keys(data)) {
             return;
         }
         this.container.innerHTML = '';

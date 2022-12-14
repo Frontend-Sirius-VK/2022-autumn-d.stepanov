@@ -28,7 +28,6 @@ app.get('/anime/*', (req, res) => {
     }
 });
 
-
 app.get('/contents', async (req, res) => {
     try {
 
@@ -53,7 +52,6 @@ app.get('/contents/:id', async (req, res) => {
     }
 });
 
-
 app.post('/create', async (req, res) => {
     const { urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime } = req.body;
     const id = await db.create(urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime);
@@ -68,18 +66,12 @@ app.put('/update', async (req, res) => {
     res.json({updateId});
 })
 
-
 app.delete('/delete', async (req, res) => {
     const { id } = req.body;
     const deleteId = await db.deleteContent(id);
 
     res.json({deleteId});
 })
-
-app.get('/login', (req, res) => {
-    res.send('user login');
-})
-
 
 app.listen(port, function () {
 	console.log(`Server listening port ${port}`);

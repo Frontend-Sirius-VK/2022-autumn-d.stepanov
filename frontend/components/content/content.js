@@ -30,9 +30,12 @@ export class Content {
 
 
         data.forEach(element => {
+
+            const {id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime} = element;
+
             const image = document.createElement('img');
             image.classList.add('content__image');
-            image.src = element.url_image;
+            image.src = urlImage;
             image.alt = 'AnimeGo';
 
             this.container = document.createElement('div');
@@ -44,16 +47,17 @@ export class Content {
 
             const link = document.createElement('a');
             link.classList.add('links__anime');
-            link.href = element.url_anime + element.id;
+            link.href = urlAnime + id;
             link.target = '_blank';
-            link.textContent = element.name_anime;
+            link.textContent = nameAnime;
 
             const contentCategory = document.createElement('span');
-            contentCategory.textContent = element.category_anime + ' / ' + element.age_anime;
+            contentCategory.classList.add('content__descriprion_span_style');
+            contentCategory.textContent = categoryAnime + ' / ' + ageAnime;
 
             const description = document.createElement('p');
             description.classList.add('content__description_text_style');
-            description.textContent = element.description_anime;
+            description.textContent = descriptionAnime;
 
             contentDescription.append(link, contentCategory, description);
 

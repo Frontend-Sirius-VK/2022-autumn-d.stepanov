@@ -1,23 +1,30 @@
 import EventBus from "../utils/eventBus.js";
 
+const NOT_FOUND = ['Ошибка 404', 'Страница, которую вы запрашиваете, не существует. Возможно был введен неверный адрес.'];
+const BAD_REQUEST = ['Ошибка 400', 'Вы ввели некорректный запрос, проверьте данные.'];
+const SERVER_ERROR = ['Ошибка 500', 'Ошибка обращения к сервису. Попробуйте обновить страницу.'];
+
+
 export class AnimeContents {
-    constructor(urlImage = '', nameAnime = 'название аниме', categoryAnime = 'категория аниме', ageAnime = 0, descriptionAnime = 'описание аниме') {
-        this.urlImage = urlImage;
-        this.nameAnime = nameAnime;
-        this.categoryAnume = categoryAnime;
-        this.ageAnime = ageAnime;
-        this.descriptionAnime = descriptionAnime;
+    constructor(id = null, urlimage = null, urlanime = null, nameanime = null, categoryanime = null, ageanime = null, descriptionanime = null) {
+        this.id = id;
+        this.urlImage = urlimage;
+        this.urlAnime = urlanime;
+        this.nameAnime = nameanime;
+        this.categoryAnime = categoryanime;
+        this.ageAnime = ageanime;
+        this.descriptionAnime = descriptionanime;
     }
 
     error(status) {
         switch(status) {
-            case 404: EventBus.emit('animeContents:not-found', ['Ошибка 404', 'Страница, которую вы запрашиваете, не существует. Возможно был введен неверный адрес.']);
+            case 404: EventBus.emit('animeContents:not-found', NOT_FOUND);
             return;
 
-            case 400: EventBus.emit('animeContents:bad-request', ['Ошибка 400', 'Вы ввели некорректный запрос, проверьте данные.']);
+            case 400: EventBus.emit('animeContents:bad-request', BAD_REQUEST);
             return;
 
-            case 500:  EventBus.emit('animeContents:server-error', ['Ошибка 500', 'Ошибка обращения к сервису. Попробуйте обновить страницу.']);
+            case 500:  EventBus.emit('animeContents:server-error', SERVER_ERROR);
             return;
         }
 
@@ -31,7 +38,7 @@ export class AnimeContents {
             return response.json();
 
         }).then((data) => {
-            EventBus.emit('animeContents:got-info', data);
+            EventBus.emit('animeContents:got-info', this.pareserData(data));
         })  
     }
 
@@ -43,7 +50,21 @@ export class AnimeContents {
             return response.json();
 
         }).then((data) => {
-            EventBus.emit('animeContents:got-by-id-info', data);
+            EventBus.emit('animeContents:got-by-id-info', this.pareserData(data)[0]);
+        })
+    }
+
+    pareserData(data) {
+        return data.map(element => {
+            const anime = new AnimeContents();
+            anime.id = element.id;
+            anime.urlImage = element.urlimage;
+            anime.urlAnime = element.urlanime;
+            anime.nameAnime = element.nameanime;
+            anime.categoryAnime = element.categoryanime;
+            anime.ageAnime = element.ageanime;
+            anime.descriptionAnime = element.descriptionanime;
+            return anime;
         })
     }
 }

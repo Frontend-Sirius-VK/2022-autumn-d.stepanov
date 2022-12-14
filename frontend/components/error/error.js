@@ -4,8 +4,6 @@ export class Error {
     }
 
     render(data) {
-        // const root = document.querySelector('#root');
-        // this.parent = document.createElement('div');
 
         const errorContainer = document.createElement('div');
         errorContainer.classList.add('error-container__div');
@@ -21,7 +19,6 @@ export class Error {
         errorContainer.append(errorStatus, errorText);
 
         this.parent.append(errorContainer);
-        // root.append(this.parent);
     }
 
 }
