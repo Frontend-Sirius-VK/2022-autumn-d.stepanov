@@ -4,27 +4,27 @@ import {Content} from "../content/content.js";
 export class Contents {
     constructor(parent) {
         this.parent = parent;
-        this.contents = null;
+        this.pageContents = null;
 
-        const contentsAnime = document.createElement('div');
-        contentsAnime.classList.add('contents__style');       
+        const contents = document.createElement('div');
+        contents.classList.add('contents');       
 
-        this.contentsAnime = contentsAnime;
+        this.contents = contents;
         this.content = null;
         EventBus.on('animeContents:got-info', this.update.bind(this));
     }
 
     render() {
 
-        this.contents = document.createElement('div');
-        this.contents.classList.add('content');
+        this.pageContents = document.createElement('div');
+        this.pageContents.classList.add('page-contents');
 
 
-        this.content = new Content(this.contentsAnime);
+        this.content = new Content(this.contents);
 
-        this.contents.appendChild(this.contentsAnime);
+        this.pageContents.appendChild(this.contents);
 
-        this.parent.appendChild(this.contents);
+        this.parent.appendChild(this.pageContents);
 
     }
 
@@ -32,7 +32,7 @@ export class Contents {
         if (!data || !data.length) {
             return;
         }
-        this.contentsAnime.innerHTML = '';
+        this.contents.innerHTML = '';
         this.content.update(data);
     }
 }

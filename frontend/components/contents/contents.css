@@ -1,9 +1,9 @@
-.content {
+.page-contents {
     display: flex;
     width: 100%;
 }
 
-.contents__style {
+.contents {
     font-size: 20px;
     width: 55%;
     margin: 20px 100px 0px 115px;
@@ -12,10 +12,9 @@
 
 
 @media (orientation: portrait) {
-    .contents__style {
+    .contents {
         margin: 0;
         width: 100%;
-        background-color: var(--color-white);
     }
 }
 

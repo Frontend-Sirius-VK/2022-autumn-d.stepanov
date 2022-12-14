@@ -5,30 +5,30 @@ export class Description {
 
     render() {
 
-        const description = document.createElement('div');
-        description.classList.add('descriptionAnimego');
+        const pageDescription = document.createElement('div');
+        pageDescription.classList.add('page-description');
 
-        const descriptionAnimego = document.createElement('div');
-        descriptionAnimego.classList.add('descriptionAnimego__style');
+        const description = document.createElement('div');
+        description.classList.add('description');
 
         const heading = document.createElement('h1');
-        heading.classList.add('descriptionAnimego__heading');
+        heading.classList.add('description__h1');
         heading.textContent = 'AnimeGO — смотреть аниме онлайн бесплатно';
 
         const descriptionOne = document.createElement('p');
-        descriptionOne.classList.add('descriptionAnimego__text');
+        descriptionOne.classList.add('description__p');
         descriptionOne.textContent = 'Вот уже много лет японская анимация пользуется огромным успехом по всему миру, включая Россию. Эти ленты любят за яркий сюжет, оригинальную рисовку и неизменный накал эмоций ';
         
 
         const descriptionTwo = document.createElement('p');
-        descriptionTwo.classList.add('descriptionAnimego__text')
+        descriptionTwo.classList.add('description__p')
         descriptionTwo.textContent = 'Многие поклонники любят смотреть аниме онлайн, однако для этого часто приходится пользоваться несколькими источниками, поскольку ни один из них нельзя назвать универсальным. Но у нас есть отличная новость для любителей аниме! Мы запустили новый проект AnimeGO, посвящённый онлайн-просмотру аниме. Теперь Вам не придётся бороздить просторы интернета в поисках любимого тайтла – все лучшие аниме в хорошем качестве уже есть на нашем портале. Мы сами очень любим этот жанр и поэтому постарались сделать наш сайт как можно более удобным и захватывающим.';
 
-        descriptionAnimego.append(heading, descriptionOne, descriptionTwo);
+        description.append(heading, descriptionOne, descriptionTwo);
 
-        description.appendChild(descriptionAnimego);
+        pageDescription.appendChild(description);
 
-        this.parent.appendChild(description);
+        this.parent.appendChild(pageDescription);
     }
 }
 
