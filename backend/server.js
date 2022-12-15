@@ -20,14 +20,14 @@ const port = process.env.PORT || 3002;
 
 app.use(express.static('dist'));
 
-app.get('/api/anime/*', (req, res) => {
-    try {
-        res.sendFile(path.join(__dirname, '.', '../frontend/index.html'));
+// app.get('/api/anime/*', (req, res) => {
+//     try {
+//         res.sendFile(path.join(__dirname, '.', '../frontend/index.html'));
 
-    } catch(error) {
-        res.status(500).end();
-    }
-});
+//     } catch(error) {
+//         res.status(500).end();
+//     }
+// });
 
 app.get('/api/contents', async (req, res) => {
     try {

@@ -7,7 +7,7 @@ const routes = [
         controller: MainController
     },
     {
-        path: /anime\/\d/,
+        path: /anime\/d/,
         controller: ContentController
     },
 ]

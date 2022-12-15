@@ -5,13 +5,13 @@ module.exports = {
     entry: './frontend/src/index.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'main.js',
+        filename: 'main.js'
     },
     module: {
         rules: [
             { test: /\.css$/, use: ['style-loader', 'css-loader'] },
             { test: /\.handlebars$/, loader: 'handlebars-loader' },
-            { test: /\.jpg$/, type: 'asset/resource' }
+            { test: /\.(png|jpg)$/, type: 'asset/resource' },
         ]
     },
     plugins: [
@@ -21,6 +21,7 @@ module.exports = {
     ],
     devServer: {
         proxy: {
+            '/api': 'http://127.0.0.1:3002'
         }
     }
 };

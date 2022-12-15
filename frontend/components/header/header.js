@@ -4,6 +4,8 @@ const URL_MANGA = 'https://animego.org/manga';
 const URL_PERSONS = 'https://animego.org/characters';
 const URL_LOGIN = 'http://localhost:3002/login';
 
+import AnimegoLogo from '../../../backend/image/logo/logo.png';
+
 export class Header {
     constructor(parent) {
         this.parent = parent;
@@ -22,7 +24,7 @@ export class Header {
 
         const icons = document.createElement('img');
         icons.classList.add('header-image');
-        icons.src = '/backend/image/logo/logo.png';
+        icons.src = AnimegoLogo;
         icons.alt = 'Логотип Анимего';
         linkMain.append(icons);
 

@@ -1,5 +1,15 @@
 import { Loader } from '../loader/loader.js';
 import EventBus from "../../utils/eventBus.js";
+// import imageAnime from '../../../backend/image/animeContent/';
+
+let files = [];
+
+function importAll(r) {
+    r.keys().forEach((s, i, arr) => files[i] = r(s));
+}
+
+importAll(require.context('../../../backend/image/animeContent/', true, /\.jpg$/));
+console.log(files);
 
 export class Content {
     constructor(parent) {
@@ -31,6 +41,8 @@ export class Content {
 
         data.forEach(element => {
 
+            // console.log(imageAnime);
+
             const {id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime} = element;
 
             this.contentsPost = document.createElement('div');
@@ -38,7 +50,7 @@ export class Content {
 
             const image = document.createElement('img');
             image.classList.add('contents-post__img');
-            image.src = urlImage;
+            image.src = '';
             image.alt = 'AnimeGo';
 
 
