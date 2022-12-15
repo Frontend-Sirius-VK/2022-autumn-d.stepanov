@@ -5,7 +5,8 @@ module.exports = {
     entry: './frontend/src/index.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'main.js'
+        filename: 'main.js',
+        publicPath: '/',
     },
     module: {
         rules: [
@@ -22,6 +23,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': 'http://127.0.0.1:3002'
-        }
+        },
+        historyApiFallback: true,
     }
 };
