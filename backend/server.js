@@ -10,16 +10,17 @@ const db = require('./model/querys.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('.'));
+// app.use(express.static('.'));
 
 const port = process.env.PORT || 3002;
 
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, '.', '../frontend/index.html'));
+// });
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '.', '../frontend/index.html'));
-});
+app.use(express.static('dist'));
 
-app.get('/anime/*', (req, res) => {
+app.get('/api/anime/*', (req, res) => {
     try {
         res.sendFile(path.join(__dirname, '.', '../frontend/index.html'));
 
@@ -28,9 +29,10 @@ app.get('/anime/*', (req, res) => {
     }
 });
 
-app.get('/contents', async (req, res) => {
+app.get('/api/contents', async (req, res) => {
     try {
 
+        console.log('работает');
         const result = await db.getAllContent();
         
         res.json(result);
@@ -40,7 +42,7 @@ app.get('/contents', async (req, res) => {
     }
 });
 
-app.get('/contents/:id', async (req, res) => {
+app.get('/api/contents/:id', async (req, res) => {
     try {
 
         const id = parseInt(req.params.id)
@@ -52,21 +54,21 @@ app.get('/contents/:id', async (req, res) => {
     }
 });
 
-app.post('/create', async (req, res) => {
+app.post('/api/create', async (req, res) => {
     const { urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime } = req.body;
     const id = await db.create(urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime);
 
     res.json({id});
 })
 
-app.put('/update', async (req, res) => {
+app.put('/api/update', async (req, res) => {
     const { id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime } = req.body;
     const updateId = await db.update(id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime);
 
     res.json({updateId});
 })
 
-app.delete('/delete', async (req, res) => {
+app.delete('/api/delete', async (req, res) => {
     const { id } = req.body;
     const deleteId = await db.deleteContent(id);
 

@@ -31,7 +31,7 @@ export class AnimeContents {
     }
 
     fetchData() {
-        fetch('/contents').then((response) => {
+        fetch('http://localhost:3002/api/contents').then((response) => {
 
             const {status} = response;
             this.error(status);
@@ -43,7 +43,7 @@ export class AnimeContents {
     }
 
     fetchDataGetById(id) {
-        fetch(`/contents/${id}`).then((response) => {
+        fetch(`/api/contents/${id}`).then((response) => {
 
             const {status} = response;
             this.error(status);
