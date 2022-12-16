@@ -3,11 +3,11 @@ import {ContentController} from '../controller/contentController.js';
 
 const routes = [
     {
-        path: /^\/$/,
+        path: `\^/\$`,
         controller: MainController
     },
     {
-        path: /^\/anime\/d$/,
+        path: `/anime/\\d`,
         controller: ContentController
     },
 ]
@@ -32,8 +32,10 @@ export class Router {
         const id = this.getId();
 
         const pathname = window.location.pathname;
+        console.log(pathname);
 
         const result = routes.find((route) => {
+            console.log(route.path);
             const regexp = new RegExp(route.path);
             const matches = pathname.match(regexp);
 
@@ -43,11 +45,14 @@ export class Router {
             return true;
         });
 
+        console.log(result);
+
         if (!result) {
             return;
         }
 
         const ControllerClass = result.controller;
+        console.log(result.controller);
         const controller = new ControllerClass();
         controller.process(id);
 
