@@ -3,22 +3,31 @@ export class Error {
         this.parent = parent;
     }
 
-    render(data) {
+    render({title, description}) {
 
-        const errorContainer = document.createElement('div');
-        errorContainer.classList.add('error-container__div');
+        if (!title || !description) {
+            return;
+        }
+        
+        try {
+            const errorContainer = document.createElement('div');
+            errorContainer.classList.add('error-container__div');
 
-        const errorStatus = document.createElement('p');
-        errorStatus.classList.add('error-container__status');
-        errorStatus.textContent = data[0];
+            const errorStatus = document.createElement('p');
+            errorStatus.classList.add('error-container__status');
+            errorStatus.textContent = title;
 
-        const errorText = document.createElement('p');
-        errorText.classList.add('error-container__text');
-        errorText.textContent = data[1];
+            const errorText = document.createElement('p');
+            errorText.classList.add('error-container__text');
+            errorText.textContent = description;
 
-        errorContainer.append(errorStatus, errorText);
+            errorContainer.append(errorStatus, errorText);
 
-        this.parent.append(errorContainer);
+            this.parent.append(errorContainer);
+        } catch(error) {
+            return;
+        }
+
     }
 
 }

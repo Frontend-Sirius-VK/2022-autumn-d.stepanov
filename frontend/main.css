@@ -8,22 +8,22 @@
 
 
 :root {
-    --color-light-grey: #e9ebee;
-    --color-baltic-sea: #343a40;
-    --color-tomato: #ff5c57;
-    --color-dark-blue: #212529;
-    --color-white-smoke: #f7f7f7;
-    --color-white: #ffffff;
-    --color-light-red: #ff5f67;
-    --color-red: #ff000d;
-    --color-black: #000000;
+    --color-body-background: #e9ebee;
+    --color-header-background: #343a40;
+    --color-header-border-bottom: #ff5c57;
+    --color-text-primary: #212529;
+    --color-content-background: #f7f7f7;
+    --color-secondary: #ffffff;
+    --color-links: #ff5f67;
+    --color-links-hover: #ff000d;
+    --color-loader-border: #000000;
 }
 
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: var(--color-light-grey);
+    background-color: var(--color-body-background);
 }
 
 
@@ -33,13 +33,3 @@ body {
     align-items: center;
 
 }
-
-
-@media (orientation: portrait) {
-    .page-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-}
-

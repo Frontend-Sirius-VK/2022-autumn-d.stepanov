@@ -14,7 +14,6 @@ export class PageContent {
     }
 
     render(data) {
-
         if (!data) {
             this.container.innerHTML = '';
             const loader = new Loader(this.container);
@@ -38,7 +37,6 @@ export class PageContent {
         const link = document.createElement('a');
         link.classList.add('links__anime');
         link.href = data.urlAnime + data.id;
-        link.target = '_blank';
         link.textContent = data.nameAnime;
 
         const contentCategory = document.createElement('span');

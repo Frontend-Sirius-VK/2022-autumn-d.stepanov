@@ -1,5 +1,5 @@
 import { Loader } from '../loader/loader.js';
-import EventBus from "../../utils/eventBus.js";
+import EventBus from '../../utils/eventBus.js';
 
 export class Content {
     constructor(parent) {
@@ -13,8 +13,7 @@ export class Content {
     }
 
     render(data) {
-
-        if (!data) {
+        if (!data || !data.length) {
             this.container.innerHTML = '';
             const loader = new Loader(this.container);
             loader.render();
@@ -48,7 +47,6 @@ export class Content {
             const link = document.createElement('a');
             link.classList.add('links__anime');
             link.href = urlAnime + id;
-            link.target = '_blank';
             link.textContent = nameAnime;
 
             const contentCategory = document.createElement('span');
@@ -69,7 +67,7 @@ export class Content {
     }
 
     update(data) {
-        this.container.innerHTML = '';
+        this.parent.innerHTML = '';
         this.render(data);
     }
 }

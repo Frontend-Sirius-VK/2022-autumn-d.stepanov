@@ -4,12 +4,13 @@
     padding: 15px;
     font-weight: 500;
     line-height: 1.2;
-    color: var(--color-dark-blue);
-    background-color: var(--color-white-smoke);
+    color: var(--color-text-primary);
+    background-color: var(--color-content-background);
 }
 
 .content__image {
     width: 170px;
+    max-height: 290px;
 }
 
 .content__style {
@@ -28,12 +29,12 @@
 
 .links__anime {
     font-size: 1.5rem;
-    color: var(--color-light-red);
+    color: var(--color-links);
     text-decoration: none;
 }   
 
 .links__anime:hover {
-    color: var(--color-red);
+    color: var(--color-links-hover);
     text-decoration: underline;
 }
 
@@ -46,32 +47,23 @@
     font-weight: 400;
     line-height: 1.5;
     margin: 0;
-    color: var(--color-dark-blue);
+    color: var(--color-text-primary);
 }
 
 
-@media (orientation: portrait) {
+@media (orientation: portrait), (max-width: 400px) {
     .content__heading_text_style {
-        font-size: clamp(2vh, 3vh, 4vh);
-        margin: 0;
-        padding: 15px;
-        font-weight: 500;
-        line-height: 1.2;
-        color: var(--color-dark-blue);
-        background-color: var(--color-white-smoke);
+        font-size: clamp(35px, 4vh, 50px);
     }
 
     .content__image {
-        width: clamp(23vh, 25vh, 27vh);
+        width: clamp(100px, 180px, 250px);
     }
 
     .content__style {
-        margin: 20px;
         margin-bottom: 70px;
-        display: flex;
         align-items: center;
         flex-direction: column;
-        gap: 20px;
     }
 
     .content__description {
@@ -79,15 +71,14 @@
     }
 
     .links__anime {
-        font-size: clamp(3vh, 3.5vh, 4vh);
+        font-size: clamp(30px, 3.5vh, 50px);
     }   
     
     .content__descriprion_span_style {
-        font-size: clamp(1vh, 2.5vh, 3vh);
+        font-size: clamp(20px, 2.5vh, 30px);
     }
     
     .content__description_text_style {
-        font-size: clamp(1.5vh, 2vh, 2.5vh);
+        font-size: clamp(15px, 2vh, 25px);
     }
 }
-

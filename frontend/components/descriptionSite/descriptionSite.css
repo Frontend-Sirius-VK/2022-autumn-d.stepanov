@@ -13,7 +13,7 @@
 
 .descriptionAnimego__heading {
     font-size: 2rem;
-    color: var(---color-dark-blue);
+    color: var(---color-text-primary);
     font-weight: 500;
     line-height: 1.2;
 }
@@ -25,12 +25,8 @@
 }
 
 
-@media (orientation: portrait) {
-
+@media (orientation: portrait), (max-width: 400px) {
     .descriptionAnimego {
-        display: flex;
-        justify-content: center;
-        width: 100%;
         margin-top: 90px;
     }
 
@@ -40,16 +36,10 @@
     }
     
     .descriptionAnimego__heading {
-        font-size: clamp(2vh, 3vh, 4vh);
-        color: var(--color-dark-blue);
-        font-weight: 500;
-        line-height: 1.2;
+        font-size: clamp(30px, 3.5vh, 50px);
     }
     
     .descriptionAnimego__text {
-        font-size: clamp(1vh, 2vh, 3vh);
-        font-weight: 400;
-        line-height: 1.5;
+        font-size: clamp(15px, 2vh, 25px);
     }
 }
-
