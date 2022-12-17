@@ -31,6 +31,7 @@ export class Router {
         const {tagName} = target;
 
         if (tagName === 'A') {
+            event.preventDefault();
 
             if (target.href !== undefined) {
                 this.go(target.href);
@@ -68,9 +69,12 @@ export class Router {
         }
     }
 
+    run() {
+        this.invokeController();
+    }
+
     start() {
         document.addEventListener('click', this.onDocumentClick);
-        this.invokeController();
     }
 
     stop() {
