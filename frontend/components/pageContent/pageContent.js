@@ -1,13 +1,15 @@
 import { Loader } from '../loader/loader.js';
 import EventBus from "../../utils/eventBus.js";
+import template from './pageContent.handlebars';
+
+function getImage(nameImage) {
+    return require(`../../../backend/image/animeContent/${nameImage}`); 
+}
 
 export class PageContent {
-    constructor(parent) {
+    constructor(parent, container) {
         this.parent = parent;
-
-        const pageContent = document.createElement('div');
-        pageContent.classList.add('page-content');
-        this.pageContent = pageContent;
+        this.container = container;
 
         EventBus.on('animeContents:loading', this.render.bind(this));
         EventBus.on('animeContents:got-by-id-info', this.update.bind(this));
@@ -16,46 +18,18 @@ export class PageContent {
     render(data) {
 
         if (!data) {
-            this.pageContent.innerHTML = '';
-            const loader = new Loader(this.pageContent);
+            this.container.innerHTML = '';
+            const loader = new Loader(this.container);
             loader.render();
-            this.parent.append(this.pageContent);
+            this.parent.append(this.container);
             return;
         }
 
-        const contentPost = document.createElement('div');
-        contentPost.classList.add('content-post');
+        const {id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime} = data;
+        const newUrlImage = getImage(urlImage);
 
-        const image = document.createElement('img');
-        image.classList.add('content-post__img');
-        image.src = data.urlImage;
-        image.alt = 'AnimeGo';
-
-
-        const contentDescription = document.createElement('div');
-        contentDescription.classList.add('content-post-description');
-
-        const link = document.createElement('a');
-        link.classList.add('content-post-description__a');
-        link.href = data.urlAnime + data.id;
-        link.target = '_blank';
-        link.textContent = data.nameAnime;
-
-        const contentCategory = document.createElement('span');
-        contentCategory.classList.add('content-post-description__span');
-        contentCategory.textContent = data.categoryAnime + ' / ' + data.ageAnime;
-
-        const description = document.createElement('p');
-        description.classList.add('content-post-description__p');
-        description.textContent = data.descriptionAnime;
-
-        contentDescription.append(link, contentCategory, description);
-
-        contentPost.append(image, contentDescription);
-
-        this.pageContent.append(contentPost);
-
-        this.parent.append(this.pageContent);
+        const html = template({newUrlImage, urlAnime, id, nameAnime, categoryAnime, ageAnime, descriptionAnime});
+        this.container.innerHTML += html;
 
 
     }
@@ -64,7 +38,7 @@ export class PageContent {
         if (!data || !Object.keys(data)) {
             return;
         }
-        this.pageContent.innerHTML = '';
+        this.container.innerHTML = '';
         this.render(data);
     }
 }

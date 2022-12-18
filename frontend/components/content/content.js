@@ -1,5 +1,10 @@
-import { Loader } from '../loader/loader.js';
+// import { Loader } from '../loader/loader.js';
 import EventBus from "../../utils/eventBus.js";
+// import image from '../../../backend/image/animeContent/Gangrev.jpg';
+
+function getImage(nameImage) {
+    return require(`../../../backend/image/animeContent/${nameImage}`); 
+}
 
 export class Content {
     constructor(parent) {
@@ -9,18 +14,18 @@ export class Content {
         contentsPost.classList.add('contents-post');
         this.contentsPost = contentsPost;
 
-        EventBus.on('animeContents:loading', this.render.bind(this));
+        // EventBus.on('animeContents:loading', this.render.bind(this));
     }
 
     render(data) {
 
-        if (!data) {
-            this.contentsPost.innerHTML = '';
-            const loader = new Loader(this.contentsPost);
-            loader.render();
-            this.parent.append(this.contentsPost);
-            return;
-        }
+        // if (!data) {
+        //     this.contentsPost.innerHTML = '';
+        //     const loader = new Loader(this.contentsPost);
+        //     loader.render();
+        //     this.parent.append(this.contentsPost);
+        //     return;
+        // }
 
         const contentsHeading = document.createElement('h2');
         contentsHeading.classList.add('contents-heading__h2');
@@ -38,7 +43,7 @@ export class Content {
 
             const image = document.createElement('img');
             image.classList.add('contents-post__img');
-            image.src = urlImage;
+            image.src = getImage(urlImage);
             image.alt = 'AnimeGo';
 
 

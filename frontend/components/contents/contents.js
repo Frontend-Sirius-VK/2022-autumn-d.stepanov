@@ -1,30 +1,30 @@
 import EventBus from "../../utils/eventBus.js";
 import {Content} from "../content/content.js";
+import template from './contents.handlebars';
 
 export class Contents {
     constructor(parent) {
         this.parent = parent;
         this.pageContents = null;
 
-        const contents = document.createElement('div');
-        contents.classList.add('contents');       
+        // const contents = document.createElement('div');
+        // contents.classList.add('contents');       
 
-        this.contents = contents;
+        // this.contents = contents;
         this.content = null;
         EventBus.on('animeContents:got-info', this.update.bind(this));
     }
 
     render() {
 
-        this.pageContents = document.createElement('div');
-        this.pageContents.classList.add('page-contents');
 
+        const html = template();
 
-        this.content = new Content(this.contents);
+        this.parent.innerHTML += html;
 
-        this.pageContents.appendChild(this.contents);
+        console.log(document.querySelector('.contents'))
 
-        this.parent.appendChild(this.pageContents);
+        this.content = new Content(document.querySelector('.contents'));
 
     }
 
@@ -32,7 +32,8 @@ export class Contents {
         if (!data || !data.length) {
             return;
         }
-        this.contents.innerHTML = '';
+        const container = document.querySelector('.contents');
+        container.innerHTML = '';
         this.content.update(data);
     }
 }
