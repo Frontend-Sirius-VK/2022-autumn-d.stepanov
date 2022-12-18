@@ -21,11 +21,13 @@ export class Header {
         linkMain.href = URL_MAIN;
 
         const icons = document.createElement('img');
+        icons.classList.add('image');
         icons.src = '/backend/image/logo/logo.png';
         icons.alt = 'Логотип Анимего';
         linkMain.append(icons);
 
         const anime = document.createElement('div');
+        anime.classList.add('header-content');
         const linkAnime = document.createElement('a');
         linkAnime.classList.add('links');
         linkAnime.href = URL_ANIME;
@@ -34,6 +36,7 @@ export class Header {
         anime.append(linkAnime);
 
         const manga = document.createElement('div');
+        manga.classList.add('header-content');
         const linkManga = document.createElement('a');
         linkManga.classList.add('links');
         linkManga.href = URL_MANGA;
@@ -43,6 +46,7 @@ export class Header {
 
 
         const persons = document.createElement('div');
+        persons.classList.add('header-content');
         const linkPersons = document.createElement('a');
         linkPersons.classList.add('links');
         linkPersons.href = URL_PERSONS;
@@ -51,6 +55,7 @@ export class Header {
         persons.append(linkPersons);
 
         const login = document.createElement('div');
+        login.classList.add('header-content');
         const linkLogin = document.createElement('a');
         linkLogin.classList.add('links');
         linkLogin.href = URL_LOGIN;

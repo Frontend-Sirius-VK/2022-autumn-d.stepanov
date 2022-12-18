@@ -13,7 +13,7 @@
 
 .descriptionAnimego__heading {
     font-size: 2rem;
-    color: var(---color-dark-blue);
+    color: var(---color-text-primary);
     font-weight: 500;
     line-height: 1.2;
 }
@@ -24,3 +24,22 @@
     line-height: 1.5;
 }
 
+
+@media (orientation: portrait), (max-width: 400px) {
+    .descriptionAnimego {
+        margin-top: 90px;
+    }
+
+    .descriptionAnimego__style {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .descriptionAnimego__heading {
+        font-size: clamp(30px, 3.5vh, 50px);
+    }
+    
+    .descriptionAnimego__text {
+        font-size: clamp(15px, 2vh, 25px);
+    }
+}

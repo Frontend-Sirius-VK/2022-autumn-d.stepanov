@@ -1,3 +1,6 @@
+import { Loader } from '../loader/loader.js';
+import EventBus from '../../utils/eventBus.js';
+
 export class Content {
     constructor(parent) {
         this.parent = parent;
@@ -5,20 +8,33 @@ export class Content {
         const container = document.createElement('div');
         container.classList.add('content__style');
         this.container = container;
+
+        EventBus.on('animeContents:loading', this.render.bind(this));
     }
 
     render(data) {
+        if (!data || !data.length) {
+            this.container.innerHTML = '';
+            const loader = new Loader(this.container);
+            loader.render();
+            this.parent.append(this.container);
+            return;
+        }
 
         const heading = document.createElement('h2');
         heading.classList.add('content__heading_text_style');
-        heading.textContent += 'Новые аниме на сайте';
+        heading.textContent = 'Новые аниме на сайте';
 
         this.parent.prepend(heading);
 
+
         data.forEach(element => {
+
+            const {id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime} = element;
+
             const image = document.createElement('img');
             image.classList.add('content__image');
-            image.src = element.url_image;
+            image.src = urlImage;
             image.alt = 'AnimeGo';
 
             this.container = document.createElement('div');
@@ -30,21 +46,20 @@ export class Content {
 
             const link = document.createElement('a');
             link.classList.add('links__anime');
-            link.href = element.url_anime;
-            link.target = '_blank';
-            link.textContent = element.name_anime;
+            link.href = urlAnime + id;
+            link.textContent = nameAnime;
 
             const contentCategory = document.createElement('span');
-            contentCategory.textContent = element.category_anime + ' / ' + element.age_anime;
+            contentCategory.classList.add('content__descriprion_span_style');
+            contentCategory.textContent = categoryAnime + ' / ' + ageAnime;
 
             const description = document.createElement('p');
             description.classList.add('content__description_text_style');
-            description.textContent = element.description_anime;
+            description.textContent = descriptionAnime;
 
             contentDescription.append(link, contentCategory, description);
 
             this.container.append(image, contentDescription);
-            // this.container = container;
 
             this.parent.append(this.container);
         });
@@ -52,7 +67,7 @@ export class Content {
     }
 
     update(data) {
-        this.container.innerHTML = '';
+        this.parent.innerHTML = '';
         this.render(data);
     }
 }

@@ -1,0 +1,19 @@
+.content-container {
+    display: flex;
+    width: 100%;
+}
+
+.content-container__style {
+    font-size: 20px;
+    width: 55%;
+    margin: 20px 100px 0px 115px;
+    background-color: var(--color-secondary);
+}
+
+
+@media (orientation: portrait), (max-width: 400px) {
+    .content-container__style {
+        margin: 0;
+        width: 100%;
+    }
+}

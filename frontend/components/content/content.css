@@ -4,12 +4,13 @@
     padding: 15px;
     font-weight: 500;
     line-height: 1.2;
-    color: var(--color-dark-blue);
-    background-color: var(--color-white-smoke);
+    color: var(--color-text-primary);
+    background-color: var(--color-content-background);
 }
 
 .content__image {
-    width: 180px;
+    width: 170px;
+    max-height: 290px;
 }
 
 .content__style {
@@ -27,20 +28,57 @@
 }
 
 .links__anime {
-    color: var(--color-light-red);
+    font-size: 1.5rem;
+    color: var(--color-links);
     text-decoration: none;
 }   
 
 .links__anime:hover {
-    color: var(--color-red);
+    color: var(--color-links-hover);
     text-decoration: underline;
 }
 
+.content__descriprion_span_style {
+    font-size: 1.0rem;
+}
+
 .content__description_text_style {
-    font-size: 1rem;
+    font-size: 1.0rem;
     font-weight: 400;
     line-height: 1.5;
     margin: 0;
-    color: var(--color-dark-blue);
+    color: var(--color-text-primary);
 }
 
+
+@media (orientation: portrait), (max-width: 400px) {
+    .content__heading_text_style {
+        font-size: clamp(35px, 4vh, 50px);
+    }
+
+    .content__image {
+        width: clamp(100px, 180px, 250px);
+    }
+
+    .content__style {
+        margin-bottom: 70px;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .content__description {
+        align-items: center;
+    }
+
+    .links__anime {
+        font-size: clamp(30px, 3.5vh, 50px);
+    }   
+    
+    .content__descriprion_span_style {
+        font-size: clamp(20px, 2.5vh, 30px);
+    }
+    
+    .content__description_text_style {
+        font-size: clamp(15px, 2vh, 25px);
+    }
+}
