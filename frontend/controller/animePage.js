@@ -3,13 +3,14 @@ import {AnimeContents} from '../model/animeContents.js';
 import EventBus from '../utils/eventBus.js';
 
 
-export class ContentController {
-    async process(url) {
+export class AnimePage {
+    async process(id) {
+        console.log(id);
         const view = new ContentView();
         view.render();
 
-        const animeContents = new AnimeContents();
+        const animeContents = new AnimeContents({});
         EventBus.emit('animeContents:loading');
-        animeContents.fetchDataGetById(url)
+        animeContents.fetchDataGetById(id)
     }
 }

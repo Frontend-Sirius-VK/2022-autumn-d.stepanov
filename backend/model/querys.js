@@ -33,7 +33,7 @@ async function create(urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, de
     try {
 
         const {rows} = await pool.query(
-            'INSERT INTO anime_contents (url_image, url_anime, name_anime, category_anime, age_anime, description_anime) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', 
+            'INSERT INTO anime_contents (urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', 
             [urlImage, urlAnime, nameAnime, categoryAnime, Number(ageAnime), descriptionAnime]
             );
 
@@ -48,7 +48,7 @@ async function update(id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime
     try {
 
         const {rows} = await pool.query(
-            'UPDATE anime_contents SET url_image  = $1, url_anime = $2, name_anime = $3, category_anime = $4, age_anime = $5, description_anime = $6  WHERE id = $7 RETURNING id', 
+            'UPDATE anime_contents SET urlImage  = $1, urlAnime = $2, nameAnime = $3, categoryAnime = $4, ageAnime = $5, descriptionAnime = $6  WHERE id = $7 RETURNING id', 
             [urlImage, urlAnime, nameAnime, categoryAnime, Number(ageAnime), descriptionAnime, id]
             );
 
@@ -66,7 +66,7 @@ async function deleteContent(id) {
             'DELETE FROM anime_contents WHERE id = $1 RETURNING id', 
             [id]
             );
-
+            
         return rows[0].id;
 
     } catch (error) {

@@ -1,21 +1,29 @@
-import {MainController} from '../controller/mainController.js';
-import {ContentController} from '../controller/contentController.js';
+import {AnimeCotroller} from '../controller/animeController.js';
+import {AnimePage} from '../controller/animePage.js';
+import EventBus from '../utils/eventBus.js';
+
 
 const routes = [
     {
         path: `\^/\$`,
-        controller: MainController
+        controller: AnimeCotroller,
+        id: false
     },
     {
         path: `/anime/\\d`,
-        controller: ContentController
+        controller: AnimePage,
+        id: true
     },
 ]
 
 
 export class Router {
     constructor() {
-
+        EventBus.off('animeContents:loading');
+        EventBus.off('animeContents:error');
+        EventBus.off('animeContents:got-by-id-info');
+        EventBus.off('animeContents:got-info');
+        this.onDocumentClick = this.onDocumentClick.bind(this);
     }
 
     getId() {
@@ -28,9 +36,26 @@ export class Router {
         }
     }
 
-    invokeController() {
-        const id = this.getId();
+    onDocumentClick(event) {
+        const {target} = event;
+        const {tagName} = target;
 
+        if (tagName === 'A') {
+            event.preventDefault();
+
+            if (target.href !== undefined) {
+                this.go(target.href);
+
+            }
+        }
+    }
+
+    go(pathname) {
+        window.history.pushState({}, '', pathname);
+        this.invokeController();
+    }
+
+    invokeController() {
         const pathname = window.location.pathname;
         console.log(pathname);
 
@@ -38,12 +63,10 @@ export class Router {
             console.log(route.path);
             const regexp = new RegExp(route.path);
             const matches = pathname.match(regexp);
-
-            if (!matches) {
-                return false;
-            }
-            return true;
+            return Boolean(matches); 
         });
+
+        console.log(result);
 
         console.log(result);
 
@@ -54,12 +77,25 @@ export class Router {
         const ControllerClass = result.controller;
         console.log(result.controller);
         const controller = new ControllerClass();
-        controller.process(id);
 
+        if (!result.id) {
+            controller.process();
+        } else {
+            const rex = /\w+$/;
+            controller.process(pathname.match(rex)[0])
+        }
+    }
+
+    run() {
+        this.invokeController();
     }
 
     start() {
-        this.invokeController();
+        document.addEventListener('click', this.onDocumentClick);
+    }
+
+    stop() {
+        document.removeEventListener('click', this.onDocumentClick);
     }
 
 }

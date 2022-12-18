@@ -10,9 +10,7 @@ export class ContentView {
         this.pageContent = null;
         this.container = null;
 
-        EventBus.on('animeContents:not-found', this.errorUpdate.bind(this));
-        EventBus.on('animeContents:bad-request', this.errorUpdate.bind(this));
-        EventBus.on('animeContents:server-error', this.errorUpdate.bind(this));
+        EventBus.on('animeContents:error', this.errorUpdate.bind(this));
     }
 
     render() {

@@ -1,7 +1,7 @@
 .page-header {
-    background-color: var(--color-baltic-sea);
+    background-color: var(--color-header-background);
     width: 100%;
-    border-bottom: 2px var(--color-tomato) solid;
+    border-bottom: 2px var(--color-header-border-bottom) solid;
     position: fixed;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .header-contents-links {
-    color: var(--color-white);
+    color: var(--color-secondary);
     text-decoration: none;
 }
 
@@ -22,18 +22,18 @@
     color: rgba(255, 255, 255, 0.514);
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait), (max-width: 400px) {
     .page-header {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        height: clamp(4vh, 8vh, 9vh);
-        border-bottom: 3px var(--color-tomato) solid;
+        height: clamp(30px, 70px, 80px);
+        border-bottom: 3px var(--color-header-border-bottom) solid;
     }
 
     .header-image {
-        width: clamp(12vh, 13vh, 15vh);
+        width: clamp(100px, 120px, 150px);
     }
     
     .header-contents {
@@ -41,4 +41,3 @@
     }
 
 }
-

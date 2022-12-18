@@ -18,14 +18,13 @@ export class Content {
     }
 
     render(data) {
-
-        // if (!data) {
-        //     this.contentsPost.innerHTML = '';
-        //     const loader = new Loader(this.contentsPost);
-        //     loader.render();
-        //     this.parent.append(this.contentsPost);
-        //     return;
-        // }
+        if (!data || !data.length) {
+            this.container.innerHTML = '';
+            const loader = new Loader(this.container);
+            loader.render();
+            this.parent.append(this.container);
+            return;
+        }
 
         const contentsHeading = document.createElement('h2');
         contentsHeading.classList.add('contents-heading__h2');
@@ -53,7 +52,6 @@ export class Content {
             const link = document.createElement('a');
             link.classList.add('contents-post-description__a');
             link.href = urlAnime + id;
-            link.target = '_blank';
             link.textContent = nameAnime;
 
             const contentCategory = document.createElement('span');

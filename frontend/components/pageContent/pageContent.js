@@ -16,7 +16,6 @@ export class PageContent {
     }
 
     render(data) {
-
         if (!data) {
             this.container.innerHTML = '';
             const loader = new Loader(this.container);

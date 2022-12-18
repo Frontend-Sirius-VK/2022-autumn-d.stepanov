@@ -13,7 +13,7 @@
 
 .description__h1 {
     font-size: 2rem;
-    color: var(---color-dark-blue);
+    color: var(---color-text-primary);
     font-weight: 500;
     line-height: 1.2;
 }
@@ -25,8 +25,7 @@
 }
 
 
-@media (orientation: portrait) {
-
+@media (orientation: portrait), (max-width: 400px) {
     .page-description {
         margin-top: 90px;
     }
@@ -37,11 +36,10 @@
     }
     
     .description__h1 {
-        font-size: clamp(2vh, 3vh, 4vh);
+        font-size: clamp(30px, 3.5vh, 50px);
     }
     
     .description__p {
-        font-size: clamp(1vh, 2vh, 3vh);
+        font-size: clamp(15px, 2vh, 25px);
     }
 }
-

@@ -6,12 +6,21 @@ export class Error {
         this.parent = parent;
     }
 
-    render(data) {
-        const [errorStatus, text] = data;
-        const context = {errorStatus, text};
-        const html = template(context);
+    render({title, description}) {
+        if (!title || !description) {
+            return;
+        }
+        
+        try {
 
-        this.parent.innerHTML += html;
+            const context = {title, description};
+            const html = template(context);
+            this.parent.innerHTML += html
+            
+        } catch(error) {
+            return;
+        }
+
     }
 
 }
