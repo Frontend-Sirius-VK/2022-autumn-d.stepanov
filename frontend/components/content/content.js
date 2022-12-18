@@ -1,4 +1,4 @@
-// import { Loader } from '../loader/loader.js';
+import { Loader } from '../loader/loader.js';
 import EventBus from "../../utils/eventBus.js";
 // import image from '../../../backend/image/animeContent/Gangrev.jpg';
 

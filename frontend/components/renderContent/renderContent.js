@@ -17,7 +17,7 @@ export class RenderContent {
 
     render() {
 
-
+        const html = template();
 
         this.parent.innerHTML += html;
 
