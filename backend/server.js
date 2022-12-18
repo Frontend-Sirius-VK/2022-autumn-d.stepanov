@@ -28,7 +28,7 @@ app.get('/anime/*', (req, res) => {
     }
 });
 
-app.get('/contents', async (req, res) => {
+app.get('/animeContents', async (req, res) => {
     try {
         const result = await db.getAllContent();
         
@@ -42,7 +42,7 @@ app.get('/contents', async (req, res) => {
     }
 });
 
-app.get('/contents/:id', async (req, res) => {
+app.get('/animeContents/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         if (!id) {
