@@ -1,13 +1,13 @@
 import EventBus from "../../utils/eventBus.js";
 import {Content} from "../content/content.js";
 
-export class Contents {
+export class RenderContent {
     constructor(parent) {
         this.parent = parent;
-        this.contents = null;
+        this.renderContent = null;
 
         const contentsAnime = document.createElement('div');
-        contentsAnime.classList.add('contents__style');       
+        contentsAnime.classList.add('renderContent__style');       
 
         this.contentsAnime = contentsAnime;
         this.content = null;
@@ -16,15 +16,15 @@ export class Contents {
 
     render() {
 
-        this.contents = document.createElement('div');
-        this.contents.classList.add('content');
+        this.renderContent = document.createElement('div');
+        this.renderContent.classList.add('renderContent');
 
 
         this.content = new Content(this.contentsAnime);
 
-        this.contents.appendChild(this.contentsAnime);
+        this.renderContent.appendChild(this.contentsAnime);
 
-        this.parent.appendChild(this.contents);
+        this.parent.appendChild(this.renderContent);
 
     }
 

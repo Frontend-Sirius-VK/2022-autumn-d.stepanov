@@ -1,6 +1,6 @@
 import {Header} from '../components/header/header.js';
 import {Description} from '../components/descriptionSite/descriptionSite.js';
-import {Contents} from '../components/contents/contents.js';
+import {RenderContent} from '../components/renderContent/renderContent.js';
 import EventBus from '../utils/eventBus.js';
 import {Error} from '../components/error/error.js';
 
@@ -9,7 +9,7 @@ export class MainView {
     constructor() {
         this.header = null;
         this.description = null;
-        this.contents = null;
+        this.renderContent = null;
         this.container = null;
 
         EventBus.on('animeContents:error', this.errorUpdate.bind(this));
@@ -18,6 +18,8 @@ export class MainView {
 
     render() {
         const root = document.querySelector('#root');
+        root.innerHTML = '';
+
         this.container = document.createElement('div');
         this.container.classList.add('page-container');
 
@@ -25,12 +27,12 @@ export class MainView {
 
         this.description = new Description(this.container);
 
-        this.contents = new Contents(this.container);
+        this.renderContent = new RenderContent(this.container);
 
         root.append(this.container);
         this.header.render();
         this.description.render();
-        this.contents.render();
+        this.renderContent.render();
     }
 
 
