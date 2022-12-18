@@ -7,7 +7,7 @@ export class RenderContent {
         this.renderContent = null;
 
         const contentsAnime = document.createElement('div');
-        contentsAnime.classList.add('renderContent__style');       
+        contentsAnime.classList.add('render-content__style');       
 
         this.contentsAnime = contentsAnime;
         this.content = null;
@@ -17,7 +17,7 @@ export class RenderContent {
     render() {
 
         this.renderContent = document.createElement('div');
-        this.renderContent.classList.add('renderContent');
+        this.renderContent.classList.add('render-content');
 
 
         this.content = new Content(this.contentsAnime);

@@ -1,9 +1,9 @@
-.renderContent {
+.render-content {
     display: flex;
     width: 100%;
 }
 
-.renderContent__style {
+.render-content__style {
     font-size: 20px;
     width: 55%;
     margin: 20px 100px 0px 115px;
@@ -12,7 +12,7 @@
 
 
 @media (orientation: portrait), (max-width: 400px) {
-    .renderContent__style {
+    .render-content__style {
         margin: 0;
         width: 100%;
     }
