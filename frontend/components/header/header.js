@@ -1,4 +1,4 @@
-const URL_MAIN = 'http://10.82.32.253:8080/';
+const URL_MAIN = 'http://87.239.109.131';
 const URL_ANIME = 'https://animego.org/anime';
 const URL_MANGA = 'https://animego.org/manga';
 const URL_PERSONS = 'https://animego.org/characters';
