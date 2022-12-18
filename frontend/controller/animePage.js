@@ -5,7 +5,6 @@ import EventBus from '../utils/eventBus.js';
 
 export class AnimePage {
     async process(id) {
-        console.log(id);
         const view = new ContentView();
         view.render();
 

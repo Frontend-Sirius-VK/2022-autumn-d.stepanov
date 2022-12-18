@@ -1,6 +1,6 @@
 import {Header} from '../components/header/header.js';
 import {Description} from '../components/descriptionSite/descriptionSite.js';
-import {RenderContent} from '../components/renderContent/renderContent.js';
+import {ContentContainer} from '../components/contentContainer/contentContainer.js';
 import EventBus from '../utils/eventBus.js';
 import {Error} from '../components/error/error.js';
 
@@ -9,7 +9,7 @@ export class MainView {
     constructor() {
         this.header = null;
         this.description = null;
-        this.renderContent = null;
+        this.ContentContainer = null;
         this.container = null;
 
         EventBus.on('animeContents:error', this.errorUpdate.bind(this));
@@ -27,12 +27,12 @@ export class MainView {
 
         this.description = new Description(this.container);
 
-        this.renderContent = new RenderContent(this.container);
+        this.ContentContainer = new ContentContainer(this.container);
 
         root.append(this.container);
         this.header.render();
         this.description.render();
-        this.renderContent.render();
+        this.ContentContainer.render();
     }
 
 

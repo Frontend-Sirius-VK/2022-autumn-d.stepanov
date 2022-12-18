@@ -26,16 +26,6 @@ export class Router {
         this.onDocumentClick = this.onDocumentClick.bind(this);
     }
 
-    getId() {
-        const pathName = window.location.pathname;
-        const rex = /\w+$/;
-        try {
-            return pathName.match(rex)[0];
-        } catch (error) {
-            return;
-        }
-    }
-
     onDocumentClick(event) {
         const {target} = event;
         const {tagName} = target;

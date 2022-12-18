@@ -29,7 +29,7 @@ app.use(express.static('dist'));
 //     }
 // });
 
-app.get('/api/contents', async (req, res) => {
+app.get('/api/animeContents', async (req, res) => {
     try {
         const result = await db.getAllContent();
         
@@ -43,7 +43,7 @@ app.get('/api/contents', async (req, res) => {
     }
 });
 
-app.get('/api/contents/:id', async (req, res) => {
+app.get('/api/animeContents/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         if (!id) {
@@ -58,7 +58,8 @@ app.get('/api/contents/:id', async (req, res) => {
     } catch(error) {
         res.status(500).end();
     }
-});
+})
+
 
 app.post('/animeContents', async (req, res) => {
     if (Object.keys(req.body).length != 6) {
@@ -87,6 +88,7 @@ app.put('/animeContents', async (req, res) => {
         res.status(500).end();
     }
 })
+
 
 app.delete('/animeContents', async (req, res) => {
     if (Object.keys(req.body).length != 1) {

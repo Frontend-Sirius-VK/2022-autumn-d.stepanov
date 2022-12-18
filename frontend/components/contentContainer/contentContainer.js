@@ -1,8 +1,8 @@
 import EventBus from "../../utils/eventBus.js";
 import {Content} from "../content/content.js";
-import template from './renderContent.handlebars';
+import template from './contentContainer.handlebars';
 
-export class RenderContent {
+export class ContentContainer {
     constructor(parent) {
         this.parent = parent;
 

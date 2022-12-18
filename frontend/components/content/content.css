@@ -1,13 +1,3 @@
-.contents-heading__h2{
-    font-size: 2rem;
-    margin: 0;
-    padding: 15px;
-    font-weight: 500;
-    line-height: 1.2;
-    color: var(--color-text-primary);
-    background-color: var(--color-content-background);
-}
-
 .contents-post {
     margin: 20px;
     display: flex;
@@ -52,10 +42,6 @@
 
 
 @media (orientation: portrait), (max-width: 400px) {
-    .content__heading_text_style {
-        font-size: clamp(35px, 4vh, 50px);
-    }
-
     .contents-post {
         margin-bottom: 70px;
         align-items: center;
