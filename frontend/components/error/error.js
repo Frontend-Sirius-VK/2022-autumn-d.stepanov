@@ -1,4 +1,3 @@
-import { Description } from '../descriptionSite/descriptionSite';
 import template from './error.handlebars';
 
 export class Error {
@@ -12,7 +11,6 @@ export class Error {
         }
         
         try {
-
             const context = {title, description};
             const html = template(context);
             this.parent.innerHTML += html

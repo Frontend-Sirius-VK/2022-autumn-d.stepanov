@@ -11,7 +11,6 @@ const pool = new Pool({
 async function getAllContent() {
     try {
 
-        console.log("Выполнился")
         const res = await pool.query('SELECT * FROM anime_contents ORDER BY ID');
         return res.rows;    
 
