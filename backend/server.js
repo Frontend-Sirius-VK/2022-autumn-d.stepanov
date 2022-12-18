@@ -60,7 +60,7 @@ app.get('/api/contents/:id', async (req, res) => {
     }
 });
 
-app.post('/', async (req, res) => {
+app.post('/animeContents', async (req, res) => {
     if (Object.keys(req.body).length != 6) {
         res.status(400).end();
     }
@@ -74,7 +74,7 @@ app.post('/', async (req, res) => {
     }
 })
 
-app.put('/', async (req, res) => {
+app.put('/animeContents', async (req, res) => {
     if (Object.keys(req.body).length != 7) {
         res.status(400).end();
     }
@@ -88,7 +88,7 @@ app.put('/', async (req, res) => {
     }
 })
 
-app.delete('/', async (req, res) => {
+app.delete('/animeContents', async (req, res) => {
     if (Object.keys(req.body).length != 1) {
         res.status(400).end();
     }

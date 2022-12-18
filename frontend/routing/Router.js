@@ -43,9 +43,11 @@ export class Router {
         if (tagName === 'A') {
             event.preventDefault();
 
-            if (target.href !== undefined) {
+            if (target.href !== undefined && target.target != '_blank') {
                 this.go(target.href);
 
+            } else {
+                window.open(target.href);
             }
         }
     }
@@ -86,16 +88,16 @@ export class Router {
         }
     }
 
-    run() {
-        this.invokeController();
-    }
 
     start() {
         document.addEventListener('click', this.onDocumentClick);
+        window.addEventListener('popstate', this.invokeController);
+        this.invokeController();
     }
 
     stop() {
         document.removeEventListener('click', this.onDocumentClick);
+        window.removeEventListener('popstate', this.invokeController);
     }
 
 }

@@ -14,8 +14,9 @@ export class ContentView {
     }
 
     render() {
-        
         const root = document.querySelector('#root');
+        root.innerHTML = '';
+        
         this.container = document.createElement('div');
         this.container.classList.add('page-container');
 

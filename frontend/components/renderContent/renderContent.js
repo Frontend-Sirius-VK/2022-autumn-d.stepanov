@@ -2,10 +2,10 @@ import EventBus from "../../utils/eventBus.js";
 import {Content} from "../content/content.js";
 import template from './contents.handlebars';
 
-export class Contents {
+export class RenderContent {
     constructor(parent) {
         this.parent = parent;
-        this.pageContents = null;
+        this.renderContent = null;
 
         // const contents = document.createElement('div');
         // contents.classList.add('contents');       
@@ -18,7 +18,6 @@ export class Contents {
     render() {
 
 
-        const html = template();
 
         this.parent.innerHTML += html;
 
