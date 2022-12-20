@@ -54,9 +54,6 @@ export class AnimeContents {
     }
 
     fetchDataGetById(id) {
-
-        console.log(id);
-
         fetch(`/api/animeContents/${id}`).then((response) => {
 
             const {status} = response;
