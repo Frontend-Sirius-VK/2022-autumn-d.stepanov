@@ -6,7 +6,10 @@ create table anime_contents
 	nameAnime text,
 	categoryAnime text,
 	ageAnime int,
-	descriptionAnime text
+	descriptionAnime text,
+	episode int,
+	status text,
+	categories text,
+	originalSource text
 )
-
 

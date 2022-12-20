@@ -18,6 +18,11 @@
     --color-links-hover: #ff000d;
     --color-loader-border: #000000;
     --color-error-status: #ff0000;
+    --color-page-content-border-color: #e5e5e5;
+    --color-page-content-border-watch-background: #ff5c57;
+    --color-page-content-border-watch-background-hover: #ff332f;
+    --color-page-content-border-comment-background: #f0f0f0;
+    --color-page-content-border-comment-background-hover: #cec9c9;
 }
 
 

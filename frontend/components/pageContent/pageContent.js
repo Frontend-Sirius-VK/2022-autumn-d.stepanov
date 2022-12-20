@@ -24,10 +24,10 @@ export class PageContent {
             return;
         }
 
-        const {id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime} = data;
+        const {id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource} = data;
         const newUrlImage = getImage(urlImage);
 
-        const html = template({newUrlImage, urlAnime, id, nameAnime, categoryAnime, ageAnime, descriptionAnime});
+        const html = template({newUrlImage, urlAnime, id, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource});
         this.container.innerHTML += html;
 
 

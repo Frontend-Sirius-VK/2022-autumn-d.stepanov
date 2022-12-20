@@ -62,7 +62,7 @@ app.get('/api/animeContents/:id', async (req, res) => {
 
 
 app.post('/animeContents', async (req, res) => {
-    if (Object.keys(req.body).length != 6) {
+    if (Object.keys(req.body).length != 10) {
         res.status(400).end();
     }
 
@@ -76,7 +76,7 @@ app.post('/animeContents', async (req, res) => {
 })
 
 app.put('/animeContents', async (req, res) => {
-    if (Object.keys(req.body).length != 7) {
+    if (Object.keys(req.body).length != 11) {
         res.status(400).end();
     }
 

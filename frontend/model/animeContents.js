@@ -17,7 +17,7 @@ const ERROR_OBJECT = {
 
 
 export class AnimeContents {
-    constructor({id, urlimage, urlanime, nameanime, categoryanime, ageanime, descriptionanime}) {
+    constructor({id, urlimage, urlanime, nameanime, categoryanime, ageanime, descriptionanime, episode, status, categories, originalsource}) {
         this.id = id;
         this.urlImage = urlimage;
         this.urlAnime = urlanime;
@@ -25,6 +25,10 @@ export class AnimeContents {
         this.categoryAnime = categoryanime;
         this.ageAnime = ageanime;
         this.descriptionAnime = descriptionanime;
+        this.episode = episode
+        this.status = status;
+        this.categories = categories;
+        this.originalSource = originalsource;
     }
 
     error(status) {

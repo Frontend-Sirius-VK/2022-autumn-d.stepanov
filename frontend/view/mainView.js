@@ -9,7 +9,8 @@ export class MainView {
     constructor() {
         this.header = null;
         this.description = null;
-        this.ContentContainer = null;
+        this.contentContainer = null;
+        this.footer = null;
         this.container = null;
 
         EventBus.on('animeContents:error', this.errorUpdate.bind(this));
@@ -27,12 +28,12 @@ export class MainView {
 
         this.description = new Description(this.container);
 
-        this.ContentContainer = new ContentContainer(this.container);
+        this.contentContainer = new ContentContainer(this.container);
 
         root.append(this.container);
         this.header.render();
         this.description.render();
-        this.ContentContainer.render();
+        this.contentContainer.render();
     }
 
 
