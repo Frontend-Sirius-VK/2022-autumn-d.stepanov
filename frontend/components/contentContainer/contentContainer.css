@@ -10,7 +10,7 @@
     background-color: var(--color-secondary);
 }
 
-.contents-heading__h2{
+.contents__heading {
     font-size: 2rem;
     margin: 0;
     padding: 15px;
@@ -27,7 +27,7 @@
         width: 100%;
     }
 
-    .contents-heading__h2 {
+    .contents__heading {
         font-size: clamp(35px, 4vh, 50px);
     }
 }
