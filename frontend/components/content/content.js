@@ -2,10 +2,6 @@ import { Loader } from '../loader/loader.js';
 import EventBus from "../../utils/eventBus.js";
 import template from './content.handlebars';
 
-function getImage(nameImage) {
-    return require(`../../../backend/image/animeContent/${nameImage}`); 
-}
-
 export class Content {
     constructor(parent, container) {
         this.parent = parent;
@@ -25,13 +21,7 @@ export class Content {
 
         data.forEach(element => {
 
-            const {id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime} = element;
-            const newUrlImage = getImage(urlImage);
-
-            const context = {newUrlImage, urlAnime, id, nameAnime, categoryAnime, ageAnime, descriptionAnime};
-
-            const html = template(context);
-
+            const html = template(element);
             this.parent.innerHTML += html;
 
         });

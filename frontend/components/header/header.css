@@ -9,7 +9,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin: 15px;
+    margin: 10px;
+    margin-left: 115px;
     gap: 50px;
 }
 
@@ -30,6 +31,10 @@
         align-items: center;
         height: clamp(30px, 70px, 80px);
         border-bottom: 3px var(--color-header-border-bottom) solid;
+    }
+
+    .header {
+        margin-left: 0px
     }
 
     .header-image {

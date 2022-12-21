@@ -10,26 +10,10 @@ const db = require('./model/querys.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(express.static('.'));
 
 const port = process.env.PORT || 3002;
 
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, '.', '../frontend/index.html'));
-// });
-
-app.use(express.static('dist'));
-
-// app.get('/api/anime/*', (req, res) => {
-//     try {
-//         res.sendFile(path.join(__dirname, '.', '../frontend/index.html'));
-
-//     } catch(error) {
-//         res.status(500).end();
-//     }
-// });
-
-app.get('/api/animeContents', async (req, res) => {
+app.get('/api/contents', async (req, res) => {
     try {
         const result = await db.getAllContent();
         
@@ -43,7 +27,7 @@ app.get('/api/animeContents', async (req, res) => {
     }
 });
 
-app.get('/api/animeContents/:id', async (req, res) => {
+app.get('/api/contents/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         if (!id) {
@@ -51,7 +35,7 @@ app.get('/api/animeContents/:id', async (req, res) => {
         }
 
         const result = await db.getById(id);
-        if (result.length === 0) {
+        if (result.length !== 1) {
             res.status(404).end();
         }
         res.status(200).json(result);
@@ -67,8 +51,11 @@ app.post('/animeContents', async (req, res) => {
     }
 
     try {
-        const { urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime } = req.body;
-        const id = await db.create(urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime);
+        const { urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource} = req.body;
+        const id = await db.create(urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource);
+        if (!id) {
+            res.status(400).end();
+        } 
         res.status(201).json({id});
     } catch(error) {
         res.status(500).end();
@@ -81,8 +68,11 @@ app.put('/animeContents', async (req, res) => {
     }
 
     try {
-        const { id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime } = req.body;
-        const updateId = await db.update(id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime);
+        const { id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource} = req.body;
+        const updateId = await db.update(id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource);
+        if (!updateId) {
+            res.status(400).end();
+        } 
         res.status(200).json({updateId});
     } catch(error) {
         res.status(500).end();

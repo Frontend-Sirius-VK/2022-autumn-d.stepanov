@@ -20,8 +20,16 @@ export class ContentContainer {
 
         this.parent.innerHTML += html;
 
-        this.content = new Content(document.querySelector('.contents'), this.contentsPost);
+        try {
+            const contents = document.querySelector('.contents');
 
+            if (Boolean(contents)) {
+                this.content = new Content(contents, this.contentsPost);
+            }
+            
+        } catch(error) {
+            return;
+        }
     }
 
     update(data = []) {

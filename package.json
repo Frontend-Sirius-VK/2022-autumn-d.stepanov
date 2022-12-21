@@ -4,11 +4,9 @@
   "description": "Analog Animego",
   "main": "index.js",
   "scripts": {
-    "server": "node ./backend/server.js",
     "start": "webpack serve --mode development",
     "build:dev": "webpack --mode development",
-    "build:prod": "webpack --mode production",
-    "compile": "handlebars ./frontend/components/descriptionSite/descriptionSite.handlebars -f ./frontend/components/descriptionSite/descriptionSite.precompiled.js"
+    "build:prod": "webpack --mode production"
   },
   "repository": {
     "type": "git",

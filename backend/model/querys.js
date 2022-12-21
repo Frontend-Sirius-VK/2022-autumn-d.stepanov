@@ -28,12 +28,12 @@ async function getById(id) {
     }
 }
 
-async function create(urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime) {
+async function create(urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource) {
     try {
 
         const {rows} = await pool.query(
-            'INSERT INTO anime_contents (urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', 
-            [urlImage, urlAnime, nameAnime, categoryAnime, Number(ageAnime), descriptionAnime]
+            'INSERT INTO anime_contents (urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id', 
+            [urlImage, urlAnime, nameAnime, categoryAnime, Number(ageAnime), descriptionAnime, Number(episode), status, categories, originalSource]
             );
 
         return rows[0].id;
@@ -43,12 +43,12 @@ async function create(urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, de
     }
 }
 
-async function update(id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime) {
+async function update(id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource) {
     try {
 
         const {rows} = await pool.query(
-            'UPDATE anime_contents SET urlImage  = $1, urlAnime = $2, nameAnime = $3, categoryAnime = $4, ageAnime = $5, descriptionAnime = $6  WHERE id = $7 RETURNING id', 
-            [urlImage, urlAnime, nameAnime, categoryAnime, Number(ageAnime), descriptionAnime, id]
+            'UPDATE anime_contents SET urlImage  = $1, urlAnime = $2, nameAnime = $3, categoryAnime = $4, ageAnime = $5, descriptionAnime = $6, episode = $7, status = $8, categories = $9, originalsource = $10  WHERE id = $11 RETURNING id', 
+            [urlImage, urlAnime, nameAnime, categoryAnime, Number(ageAnime), descriptionAnime, episode, status, categories, originalSource, id]
             );
 
         return rows[0].id;

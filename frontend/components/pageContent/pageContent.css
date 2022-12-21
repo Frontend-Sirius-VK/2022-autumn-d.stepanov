@@ -146,6 +146,14 @@
         flex-direction: column;
     }
 
+    .column-left-container-watch {
+        width: clamp(100px, 240px, 380px);
+    }
+
+    .column-left-container-comment {
+        width: clamp(100px, 240px, 380px);
+    }
+
     .content-post-column-right {
         margin: 0;
     }
@@ -156,7 +164,7 @@
     }
 
     .column-right-container {
-        justify-content: center;
+        justify-content: flex-start;
         gap: clamp(30px, 50px, 90px);
 
     }
