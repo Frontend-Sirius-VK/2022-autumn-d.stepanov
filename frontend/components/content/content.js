@@ -7,29 +7,33 @@ export class Content {
         this.parent = parent;
         this.container = container;
 
+        const contentsPost = document.createElement('div');
+        contentsPost.classList.add('contents-container');
+        this.contentsPost = contentsPost;
+
         EventBus.on('animeContents:loading', this.render.bind(this));
     }
 
     render(data) {
         if (!data || !data.length) {
-            this.container.innerHTML = '';
-            const loader = new Loader(this.container);
+            this.contentsPost.innerHTML = '';
+            const loader = new Loader(this.contentsPost);
             loader.render();
-            this.parent.append(this.container);
+            this.parent.append(this.contentsPost);
             return;
         }
 
         data.forEach(element => {
 
             const html = template(element);
-            this.parent.innerHTML += html;
+            this.contentsPost.innerHTML += html;
 
         });
             
     }
 
     update(data) {
-        this.container.innerHTML = '';
+        this.contentsPost.innerHTML = '';
         this.render(data);
     }
 }

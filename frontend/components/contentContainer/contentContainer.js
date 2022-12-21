@@ -6,10 +6,6 @@ export class ContentContainer {
     constructor(parent) {
         this.parent = parent;
 
-        const contentsPost = document.createElement('div');
-        contentsPost.classList.add('contents-post');
-        this.contentsPost = contentsPost;
-
         this.content = null;
         EventBus.on('animeContents:got-info', this.update.bind(this));
     }
@@ -24,9 +20,9 @@ export class ContentContainer {
             const contents = document.querySelector('.contents');
 
             if (Boolean(contents)) {
-                this.content = new Content(contents, this.contentsPost);
+                this.content = new Content(contents);
             }
-            
+
         } catch(error) {
             return;
         }
@@ -36,8 +32,7 @@ export class ContentContainer {
         if (!data || !data.length) {
             return;
         }
-
-        this.contentsPost.innerHTML = '';
+        
         this.content.update(data);
     }
 }
