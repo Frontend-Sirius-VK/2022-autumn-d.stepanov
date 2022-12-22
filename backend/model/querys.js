@@ -32,7 +32,7 @@ async function create(urlImage, urlAnime, urlWatch, nameAnime, categoryAnime, ag
     try {
 
         const {rows} = await pool.query(
-            'INSERT INTO anime_contents (urlImage, urlAnime, urlWatch nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource, fullDescription) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING id', 
+            'INSERT INTO anime_contents (urlImage, urlAnime, urlWatch, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource, fullDescription) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING id', 
             [urlImage, urlAnime, urlWatch, nameAnime, categoryAnime, Number(ageAnime), descriptionAnime, Number(episode), status, categories, originalSource, fullDescription]
             );
 
@@ -75,6 +75,10 @@ async function deleteContent(id) {
 
 module.exports = {
     getAllContent,
+    getById,
+    create,
+    update,
+    deleteContent,
     getById,
     create,
     update,

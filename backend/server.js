@@ -50,7 +50,7 @@ app.post('/animeContents', async (req, res) => {
         res.status(400).end();
     }
 
-    const object = ['urlImage', 'urlAnime', 'nameAnime', 'categoryAnime', 'ageAnime', 'descriptionAnime', 'episode', 'status', 'categories', 'originalSource'];
+    const object = ['urlImage', 'urlAnime', 'nameAnime', 'urlWatch', 'categoryAnime', 'ageAnime', 'descriptionAnime', 'episode', 'status', 'categories', 'originalSource', 'fullDescription'];
 
     Object.keys(req.body).some((elem) => {
         if (!object.includes(elem)) {
@@ -75,7 +75,7 @@ app.put('/animeContents', async (req, res) => {
         res.status(400).end();
     }
 
-    const object = ['id', 'urlImage', 'urlAnime', 'nameAnime', 'categoryAnime', 'ageAnime', 'descriptionAnime', 'episode', 'status', 'categories', 'originalSource'];
+    const object = ['id', 'urlImage', 'urlAnime', 'urlWatch', 'nameAnime', 'categoryAnime', 'ageAnime', 'descriptionAnime', 'episode', 'status', 'categories', 'originalSource', 'fullDescription'];
 
     Object.keys(req.body).some((elem) => {
         if (!object.includes(elem)) {
