@@ -1,19 +1,33 @@
-.content-container {
+.page-content-container {
     display: flex;
     width: 100%;
 }
 
-.content-container__style {
+.contents {
     font-size: 20px;
     width: 55%;
     margin: 20px 100px 0px 115px;
     background-color: var(--color-secondary);
 }
 
+.contents__heading {
+    font-size: 2rem;
+    margin: 0;
+    padding: 15px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    background-color: var(--color-content-background);
+}
+
 
 @media (orientation: portrait), (max-width: 400px) {
-    .content-container__style {
+    .contents{
         margin: 0;
         width: 100%;
+    }
+
+    .contents__heading {
+        font-size: clamp(35px, 4vh, 50px);
     }
 }

@@ -17,14 +17,20 @@ const ERROR_OBJECT = {
 
 
 export class AnimeContents {
-    constructor({id, urlimage, urlanime, nameanime, categoryanime, ageanime, descriptionanime}) {
+    constructor({id, urlimage, urlanime, urlwatch, nameanime, categoryanime, ageanime, descriptionanime, episode, status, categories, originalsource, fulldescription}) {
         this.id = id;
         this.urlImage = urlimage;
         this.urlAnime = urlanime;
+        this.urlWatch = urlwatch
         this.nameAnime = nameanime;
         this.categoryAnime = categoryanime;
         this.ageAnime = ageanime;
         this.descriptionAnime = descriptionanime;
+        this.episode = episode
+        this.status = status;
+        this.categories = categories;
+        this.originalSource = originalsource;
+        this.fullDescription = fulldescription;
     }
 
     error(status) {
@@ -42,7 +48,7 @@ export class AnimeContents {
     }
 
     fetchData() {
-        fetch('/animeContents').then((response) => {
+        fetch('/api/contents').then((response) => {
 
             const {status} = response;
             this.error(status);
@@ -54,7 +60,7 @@ export class AnimeContents {
     }
 
     fetchDataGetById(id) {
-        fetch(`/animeContents/${id}`).then((response) => {
+        fetch(`/api/contents/${id}`).then((response) => {
 
             const {status} = response;
             this.error(status);
