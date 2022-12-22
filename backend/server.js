@@ -46,13 +46,21 @@ app.get('/api/contents/:id', async (req, res) => {
 
 
 app.post('/animeContents', async (req, res) => {
-    if (Object.keys(req.body).length != 10) {
+    if (Object.keys(req.body).length != 12) {
         res.status(400).end();
     }
 
+    const object = ['urlImage', 'urlAnime', 'nameAnime', 'categoryAnime', 'ageAnime', 'descriptionAnime', 'episode', 'status', 'categories', 'originalSource'];
+
+    Object.keys(req.body).some((elem) => {
+        if (!object.includes(elem)) {
+            res.status(400).end();
+        };
+    })
+
     try {
-        const { urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource} = req.body;
-        const id = await db.create(urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource);
+        const { urlImage, urlAnime, urlWatch, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource, fullDescription} = req.body;
+        const id = await db.create(urlImage, urlAnime, urlWatch, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource, fullDescription);
         if (!id) {
             res.status(400).end();
         } 
@@ -63,15 +71,23 @@ app.post('/animeContents', async (req, res) => {
 })
 
 app.put('/animeContents', async (req, res) => {
-    if (Object.keys(req.body).length != 11) {
+    if (Object.keys(req.body).length != 13) {
         res.status(400).end();
     }
 
-    try {
-        const { id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource} = req.body;
-        const updateId = await db.update(id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource);
-        if (!updateId) {
+    const object = ['id', 'urlImage', 'urlAnime', 'nameAnime', 'categoryAnime', 'ageAnime', 'descriptionAnime', 'episode', 'status', 'categories', 'originalSource'];
+
+    Object.keys(req.body).some((elem) => {
+        if (!object.includes(elem)) {
             res.status(400).end();
+        };
+    })
+
+    try {
+        const { id, urlImage, urlAnime, urlWatch, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource, fullDescription} = req.body;
+        const updateId = await db.update(id, urlImage, urlAnime, urlWatch, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource, fullDescription);
+        if (!updateId) {
+            res.status(500).end();
         } 
         res.status(200).json({updateId});
     } catch(error) {
@@ -84,6 +100,14 @@ app.delete('/animeContents', async (req, res) => {
     if (Object.keys(req.body).length != 1) {
         res.status(400).end();
     }
+
+    const object = ['id'];
+
+    Object.keys(req.body).some((elem) => {
+        if (!object.includes(elem)) {
+            res.status(400).end();
+        };
+    })
 
     try {
         const { id } = req.body;

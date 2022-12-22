@@ -20,6 +20,8 @@ export class PageContent {
             return;
         }
 
+        console.log(data.urlWatch);
+
         const html = template(data);
         this.container.innerHTML += html;
 
