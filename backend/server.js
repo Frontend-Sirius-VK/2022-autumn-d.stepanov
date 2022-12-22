@@ -10,25 +10,10 @@ const db = require('./model/querys.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('.'));
 
 const port = process.env.PORT || 3002;
 
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '.', '../frontend/index.html'));
-});
-
-app.get('/anime/*', (req, res) => {
-    try {
-        res.sendFile(path.join(__dirname, '.', '../frontend/index.html'));
-
-    } catch(error) {
-        res.status(500).end();
-    }
-});
-
-app.get('/animeContents', async (req, res) => {
+app.get('/api/contents', async (req, res) => {
     try {
         const result = await db.getAllContent();
         
@@ -42,7 +27,7 @@ app.get('/animeContents', async (req, res) => {
     }
 });
 
-app.get('/animeContents/:id', async (req, res) => {
+app.get('/api/contents/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         if (!id) {
@@ -50,23 +35,35 @@ app.get('/animeContents/:id', async (req, res) => {
         }
 
         const result = await db.getById(id);
-        if (result.length === 0) {
+        if (result.length !== 1) {
             res.status(404).end();
         }
         res.status(200).json(result);
     } catch(error) {
         res.status(500).end();
     }
-});
+})
+
 
 app.post('/animeContents', async (req, res) => {
-    if (Object.keys(req.body).length != 6) {
+    if (Object.keys(req.body).length != 12) {
         res.status(400).end();
     }
 
+    const object = ['urlImage', 'urlAnime', 'nameAnime', 'urlWatch', 'categoryAnime', 'ageAnime', 'descriptionAnime', 'episode', 'status', 'categories', 'originalSource', 'fullDescription'];
+
+    Object.keys(req.body).some((elem) => {
+        if (!object.includes(elem)) {
+            res.status(400).end();
+        };
+    })
+
     try {
-        const { urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime } = req.body;
-        const id = await db.create(urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime);
+        const { urlImage, urlAnime, urlWatch, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource, fullDescription} = req.body;
+        const id = await db.create(urlImage, urlAnime, urlWatch, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource, fullDescription);
+        if (!id) {
+            res.status(400).end();
+        } 
         res.status(201).json({id});
     } catch(error) {
         res.status(500).end();
@@ -74,23 +71,43 @@ app.post('/animeContents', async (req, res) => {
 })
 
 app.put('/animeContents', async (req, res) => {
-    if (Object.keys(req.body).length != 7) {
+    if (Object.keys(req.body).length != 13) {
         res.status(400).end();
     }
 
+    const object = ['id', 'urlImage', 'urlAnime', 'urlWatch', 'nameAnime', 'categoryAnime', 'ageAnime', 'descriptionAnime', 'episode', 'status', 'categories', 'originalSource', 'fullDescription'];
+
+    Object.keys(req.body).some((elem) => {
+        if (!object.includes(elem)) {
+            res.status(400).end();
+        };
+    })
+
     try {
-        const { id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime } = req.body;
-        const updateId = await db.update(id, urlImage, urlAnime, nameAnime, categoryAnime, ageAnime, descriptionAnime);
+        const { id, urlImage, urlAnime, urlWatch, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource, fullDescription} = req.body;
+        const updateId = await db.update(id, urlImage, urlAnime, urlWatch, nameAnime, categoryAnime, ageAnime, descriptionAnime, episode, status, categories, originalSource, fullDescription);
+        if (!updateId) {
+            res.status(500).end();
+        } 
         res.status(200).json({updateId});
     } catch(error) {
         res.status(500).end();
     }
 })
 
+
 app.delete('/animeContents', async (req, res) => {
     if (Object.keys(req.body).length != 1) {
         res.status(400).end();
     }
+
+    const object = ['id'];
+
+    Object.keys(req.body).some((elem) => {
+        if (!object.includes(elem)) {
+            res.status(400).end();
+        };
+    })
 
     try {
         const { id } = req.body;

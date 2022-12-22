@@ -22,7 +22,10 @@ export class ContentView {
 
         this.header = new Header(this.container);
 
-        this.pageContent = new PageContent(this.container);
+        const pageContent = document.createElement('div');
+        pageContent.classList.add('page-content');
+
+        this.pageContent = new PageContent(this.container, pageContent);
 
         root.append(this.container);
         this.header.render();

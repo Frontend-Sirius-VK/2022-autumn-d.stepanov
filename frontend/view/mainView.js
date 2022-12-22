@@ -27,12 +27,12 @@ export class MainView {
 
         this.description = new Description(this.container);
 
-        this.ContentContainer = new ContentContainer(this.container);
+        this.contentContainer = new ContentContainer(this.container);
 
         root.append(this.container);
         this.header.render();
         this.description.render();
-        this.ContentContainer.render();
+        this.contentContainer.render();
     }
 
 

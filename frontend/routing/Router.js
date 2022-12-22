@@ -5,12 +5,12 @@ import EventBus from '../utils/eventBus.js';
 
 const routes = [
     {
-        path: /^\/$/,
+        path: `\^/\$`,
         controller: AnimeCotroller,
         id: false
     },
     {
-        path: /anime\/\d/,
+        path: `/anime/\\d`,
         controller: AnimePage,
         id: true
     },
