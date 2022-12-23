@@ -56,7 +56,9 @@ export class AnimeContents {
 
         }).then((data) => {
             EventBus.emit('animeContents:got-info', this.parserData(data));
-        })  
+        }).catch(() => {
+            EventBus.emit('animeContents:error', ERROR_OBJECT.status500);
+        });
     }
 
     fetchDataGetById(id) {
@@ -68,7 +70,9 @@ export class AnimeContents {
 
         }).then((data) => {
             EventBus.emit('animeContents:got-by-id-info', this.parserData(data)[0]);
-        })
+        }).catch(() => {
+            EventBus.emit('animeContents:error', ERROR_OBJECT.status500);
+        });
     }
 
     parserData(data) {
