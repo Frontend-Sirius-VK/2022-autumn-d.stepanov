@@ -1,5 +1,11 @@
+.contents-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .contents-post {
-    margin: 20px;
+    margin: 15px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

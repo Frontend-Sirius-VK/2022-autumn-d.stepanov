@@ -1,7 +1,7 @@
 .loaderWrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-self: center;
     padding: 20px;
     width: 100%;
 }
